@@ -27,14 +27,14 @@ const icons = {
 
 function MenuItemDisplay({ item, lang }: { item: MenuItem; lang: string }) {
   return (
-    <div className="py-6 flex gap-4 items-start relative border-b border-border/70 md:border-b-0">
-      <div className="w-24 h-24 flex-shrink-0">
+    <div className="py-6 flex gap-4 items-start relative border-b border-border/70 last:border-b-0 md:border-b-0">
+      <div className="w-20 h-20 flex-shrink-0">
         <Image
           src={item.imageUrl}
           alt={item.name}
-          width={100}
-          height={100}
-          className="rounded-full object-cover w-24 h-24 border-2 border-primary/20 shadow-sm"
+          width={80}
+          height={80}
+          className="rounded-full object-cover w-20 h-20 border-2 border-primary/20 shadow-sm"
           data-ai-hint={item.imageHint}
         />
       </div>
@@ -66,16 +66,17 @@ function MenuItemDisplay({ item, lang }: { item: MenuItem; lang: string }) {
         )}
 
         {item.addOns && (
-          <Alert className="mt-4 bg-secondary/50">
-            <Info className="h-4 w-4" />
-            <AlertTitle>{item.addOnsLabel}</AlertTitle>
+          <Alert className="mt-4 bg-secondary/50 border-accent/50">
+            <Info className="h-4 w-4 text-accent" />
+            <AlertTitle className="text-accent">{item.addOnsLabel}</AlertTitle>
             <AlertDescription>
-              {Object.entries(item.addOns).map(([addOn, price], index) => (
-                <span key={addOn}>
-                  {addOn} ({price})
-                  {index < Object.keys(item.addOns!).length - 1 ? ', ' : ''}
-                </span>
-              ))}
+              <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                {Object.entries(item.addOns).map(([addOn, price]) => (
+                  <span key={addOn}>
+                    {addOn} ({price})
+                  </span>
+                ))}
+              </div>
             </AlertDescription>
           </Alert>
         )}
@@ -101,7 +102,7 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
         <Tabs defaultValue="starters" className="w-full">
           <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto">
             {categories.map((key) => (
-              <TabsTrigger key={key} value={key} className="py-2.5 flex items-center gap-2">
+              <TabsTrigger key={key} value={key} className="py-2.5 flex items-center gap-2 text-base">
                  {icons[key as keyof typeof icons]}
                 {dictionary.categories[key]}
               </TabsTrigger>
