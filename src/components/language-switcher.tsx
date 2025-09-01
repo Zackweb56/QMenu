@@ -33,7 +33,7 @@ export function LanguageSwitcher({ lang, dictionary }: LanguageSwitcherProps) {
   ];
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-1 md:gap-2">
       {languages.map(({ key, flag }) => (
         <Button
           key={key}
@@ -41,7 +41,7 @@ export function LanguageSwitcher({ lang, dictionary }: LanguageSwitcherProps) {
           variant={lang === key ? 'default' : 'outline'}
           size="sm"
           className={cn(
-            'rounded-full px-3 md:px-4',
+            'rounded-full px-2 md:px-4',
             lang === key
               ? 'bg-primary text-primary-foreground'
               : 'bg-background/50 text-foreground'

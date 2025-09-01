@@ -9,7 +9,7 @@ import {
   TabsTrigger,
 } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Soup, UtensilsCrossed, Cake, GlassWater } from 'lucide-react';
+import { Soup, UtensilsCrossed, Cake, GlassWater, PlusCircle } from 'lucide-react';
 import type { Translations, MenuItem } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { MenuItemModal } from './menu-item-modal';
@@ -20,9 +20,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { useCart } from '@/context/cart-context';
+import { Button } from './ui/button';
 
 type MenuSectionProps = {
-  dictionary: Translations['menu'];
+  dictionary: Translations['menu'] & Translations['cart'];
   lang: 'en' | 'fr' | 'ar';
 };
 
@@ -34,8 +36,22 @@ const icons = {
 };
 
 function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem; lang: string; onSelect: () => void; dictionary: Translations['menu'] }) {
+  const { addItem } = useCart();
   const hasOptions = !!item.sizes || !!item.addOns;
 
+  const handleDirectAdd = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (hasOptions) {
+      onSelect();
+    } else {
+      addItem({
+        menuItem: item,
+        quantity: 1,
+        unitPrice: item.price!,
+      });
+    }
+  };
+  
   return (
     <div className="py-6 flex gap-4 items-start cursor-pointer group" onClick={onSelect}>
       <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
@@ -49,15 +65,12 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem;
         />
       </div>
       <div className="flex-grow overflow-hidden">
-        <div className="flex items-baseline">
-            <h4 className="font-headline text-sm md:text-lg text-foreground group-hover:text-primary transition-colors truncate">{item.name}</h4>
+        <div className="flex justify-between items-baseline">
+            <h4 className="font-headline text-lg md:text-xl text-foreground group-hover:text-primary transition-colors truncate">{item.name}</h4>
             {item.price && (
-              <>
-                <span className="flex-grow border-b-2 border-dotted border-border/50 mx-2"></span>
-                <span className={cn("text-sm md:text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-2' : 'pe-2')}>
+                <span className={cn("text-base md:text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-2' : 'pe-2')}>
                   {item.price}
                 </span>
-              </>
             )}
         </div>
         <p className="text-muted-foreground text-sm mt-1 truncate">{item.description}</p>
@@ -65,6 +78,11 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem;
         {hasOptions && (
            <Badge variant="outline" className="mt-2">{dictionary.details_badge}</Badge>
         )}
+      </div>
+       <div className="flex items-center h-full ms-2">
+        <Button size="icon" variant="ghost" className="rounded-full w-10 h-10 group-hover:bg-primary/10" onClick={handleDirectAdd}>
+          <PlusCircle className="w-6 h-6 text-primary group-hover:scale-110 transition-transform"/>
+        </Button>
       </div>
     </div>
   );
@@ -137,8 +155,7 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
         isOpen={!!selectedItem} 
         onClose={closeModal} 
         item={selectedItem} 
-        lang={lang}
-        dictionary={{ extras_question: dictionary.extras_question }}
+        dictionary={dictionary}
       />
     </section>
   );

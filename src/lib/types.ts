@@ -5,15 +5,22 @@ export interface MenuItem {
   price?: string;
   badge?: string;
   sizes?: {
-    small?: string;
-    medium?: string;
-    large?: string;
     [key: string]: string | undefined;
   };
   addOns?: { [key: string]: string };
   addOnsLabel?: string;
   imageUrl: string | string[];
   imageHint: string;
+}
+
+export interface CartItem {
+  id: string;
+  menuItem: MenuItem;
+  quantity: number;
+  unitPrice: string;
+  totalPrice: number;
+  selectedSize?: string | null;
+  selectedAddOns?: { [key: string]: string };
 }
 
 export interface MenuCategory {
@@ -47,6 +54,17 @@ export interface Translations {
       drinks: MenuCategory;
     };
   };
+  cart: {
+    title: string;
+    empty_cart_message: string;
+    item_total: string;
+    extras_total: string;
+    total: string;
+    place_order_button: string;
+    add_to_order_button: string;
+    size_prompt: string;
+    currency: string;
+  },
   footer: {
     copyright: string;
   };

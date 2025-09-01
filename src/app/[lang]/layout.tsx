@@ -3,6 +3,7 @@ import { getDictionary } from '@/lib/translations';
 import '../globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Literata, PT_Sans } from 'next/font/google';
+import { CartProvider } from '@/context/cart-context';
 
 const literata = Literata({
   subsets: ['latin'],
@@ -41,7 +42,9 @@ export default function LangLayout({
       className={`${literata.variable} ${ptSans.variable}`}
     >
       <body className='bg-background text-foreground font-body antialiased'>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
         <Toaster />
       </body>
     </html>
