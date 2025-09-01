@@ -25,7 +25,8 @@ import { Button } from './ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 type MenuSectionProps = {
-  dictionary: Translations['menu'] & Translations['cart'];
+  dictionary: Translations['menu'];
+  cartDictionary: Translations['cart'];
   lang: 'en' | 'fr' | 'ar';
 };
 
@@ -36,7 +37,7 @@ const icons = {
   drinks: <GlassWater className="w-5 h-5" />,
 };
 
-function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem; lang: string; onSelect: () => void; dictionary: Translations['menu'] & Translations['cart'] }) {
+function MenuItemDisplay({ item, lang, onSelect, dictionary, cartDictionary }: { item: MenuItem; lang: string; onSelect: () => void; dictionary: Translations['menu']; cartDictionary: Translations['cart'] }) {
   const { addItem } = useCart();
   const isMobile = useIsMobile();
   const hasOptions = !!item.sizes || !!item.addOns;
@@ -68,14 +69,14 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem;
       </div>
       <div className="flex-grow overflow-hidden">
         <div className="flex justify-between items-baseline">
-            <h4 className="font-headline text-lg md:text-xl text-foreground group-hover:text-primary transition-colors truncate">{item.name}</h4>
+            <h4 className="font-headline text-lg md:text-xl text-foreground group-hover:text-primary transition-colors truncate md:whitespace-normal">{item.name}</h4>
             {item.price && (
                 <span className={cn("text-base md:text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-2' : 'pe-2')}>
-                  {item.price} {dictionary.currency}
+                  {item.price} {cartDictionary.currency}
                 </span>
             )}
         </div>
-        <p className="text-muted-foreground text-sm mt-1 truncate">{item.description}</p>
+        <p className="text-muted-foreground text-sm mt-1 truncate md:whitespace-normal">{item.description}</p>
         
         {hasOptions && (
            <Badge variant="outline" className="mt-2">{dictionary.details_badge}</Badge>
@@ -84,14 +85,14 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem;
        <div className="flex items-center h-full ms-2">
         <Button size={isMobile ? "icon" : "default"} variant="ghost" className="rounded-full w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 group-hover:bg-primary/10" onClick={handleDirectAdd}>
           <PlusCircle className="w-6 h-6 text-primary group-hover:scale-110 transition-transform"/>
-          <span className="hidden md:inline ms-2 font-semibold">{dictionary.add_to_order_button}</span>
+          <span className="hidden md:inline ms-2 font-semibold">{cartDictionary.add_to_order_button}</span>
         </Button>
       </div>
     </div>
   );
 }
 
-export function MenuSection({ dictionary, lang }: MenuSectionProps) {
+export function MenuSection({ dictionary, cartDictionary, lang }: MenuSectionProps) {
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
 
   const categories = Object.keys(dictionary.items) as (keyof typeof dictionary.items)[];
@@ -145,6 +146,7 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
                       item={item} 
                       lang={lang}
                       dictionary={dictionary}
+                      cartDictionary={cartDictionary}
                       onSelect={() => handleItemClick(item)}
                     />
                 ))}
@@ -159,6 +161,7 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
         onClose={closeModal} 
         item={selectedItem} 
         dictionary={dictionary}
+        cartDictionary={cartDictionary}
       />
     </section>
   );

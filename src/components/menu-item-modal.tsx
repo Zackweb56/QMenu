@@ -19,7 +19,6 @@ import {
 } from '@/components/ui/carousel';
 import Image from 'next/image';
 import type { MenuItem, CartItem, Translations } from '@/lib/types';
-import { Badge } from '@/components/ui/badge';
 import { Separator } from './ui/separator';
 import { Button } from './ui/button';
 import { Minus, Plus } from 'lucide-react';
@@ -32,10 +31,11 @@ interface MenuItemModalProps {
   isOpen: boolean;
   onClose: () => void;
   item: MenuItem | null;
-  dictionary: Translations['menu'] & Translations['cart'];
+  dictionary: Translations['menu'];
+  cartDictionary: Translations['cart'];
 }
 
-export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemModalProps) {
+export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionary }: MenuItemModalProps) {
   const { addItem } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
@@ -131,7 +131,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
                         </DialogDescription>
                     </div>
                     {item.price && (
-                        <div className="text-xl font-bold text-primary whitespace-nowrap ps-4">{item.price} {dictionary.currency}</div>
+                        <div className="text-xl font-bold text-primary whitespace-nowrap ps-4">{item.price} {cartDictionary.currency}</div>
                     )}
                 </div>
             </DialogHeader>
@@ -150,7 +150,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
                           <Label htmlFor={size} className="flex items-baseline text-sm flex-grow ms-2 cursor-pointer">
                             <span className="capitalize font-medium">{size}</span>
                             <span className="flex-grow border-b-2 border-dotted border-border/50 mx-2"></span>
-                            <span className="font-semibold text-primary">{price} {dictionary.currency}</span>
+                            <span className="font-semibold text-primary">{price} {cartDictionary.currency}</span>
                           </Label>
                         </div>
                       ))}
@@ -168,7 +168,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
                         <Checkbox id={addOn} onCheckedChange={() => handleAddOnToggle(addOn)} />
                         <Label htmlFor={addOn} className="flex justify-between items-center w-full ms-2 cursor-pointer">
                            <span>{addOn}</span>
-                           <span className="font-semibold text-primary/90">+{price} {dictionary.currency}</span>
+                           <span className="font-semibold text-primary/90">+{price} {cartDictionary.currency}</span>
                         </Label>
                       </div>
                     ))}
@@ -189,7 +189,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
                         </Button>
                     </div>
                     <Button onClick={handleAddToCart} size="lg" disabled={item.sizes && !selectedSize}>
-                        <Plus className="w-5 h-5 me-2" /> {dictionary.add_to_order_button}
+                        <Plus className="w-5 h-5 me-2" /> {cartDictionary.add_to_order_button}
                     </Button>
                 </div>
             </DialogFooter>

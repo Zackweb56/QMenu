@@ -26,10 +26,15 @@ export default async function MenuPage({ params: { lang } }: MenuPageProps) {
 
       <section className="py-12 text-center">
         <div className="container mx-auto px-4 flex flex-col items-center gap-4">
-          <Logo className="w-24 h-24 text-primary rounded-full border-4 border-primary p-1" />
-          <div>
-            <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary">{dict.restaurantName}</h1>
-            <p className="text-muted-foreground mt-2 text-lg">{dict.restaurantSubtitle}</p>
+          <div className="md:hidden">
+            <Logo className="w-24 h-24 text-primary rounded-full border-4 border-primary p-1" />
+          </div>
+          <div className="hidden md:flex flex-col items-center gap-4">
+             <Logo className="w-24 h-24 text-primary rounded-full border-4 border-primary p-1" />
+            <div>
+              <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary">{dict.restaurantName}</h1>
+              <p className="text-muted-foreground mt-2 text-lg">{dict.restaurantSubtitle}</p>
+            </div>
           </div>
           <div className="flex flex-col md:flex-row items-center gap-x-6 gap-y-2 mt-4 text-muted-foreground">
             <div className="flex items-center gap-2">
@@ -46,7 +51,7 @@ export default async function MenuPage({ params: { lang } }: MenuPageProps) {
 
       <main className="flex-grow container mx-auto px-4">
         <Separator />
-        <MenuSection dictionary={dict.menu} lang={lang} />
+        <MenuSection dictionary={dict.menu} cartDictionary={dict.cart} lang={lang} />
       </main>
 
       <Footer copyrightText={dict.footer.copyright} />
