@@ -13,6 +13,7 @@ import { Soup, UtensilsCrossed, Cake, GlassWater } from 'lucide-react';
 import type { Translations, MenuItem } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { MenuItemModal } from './menu-item-modal';
+import { ScrollArea, ScrollBar } from './ui/scroll-area';
 
 type MenuSectionProps = {
   dictionary: Translations['menu'];
@@ -83,14 +84,17 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
           {dictionary.title}
         </h2>
         <Tabs defaultValue="starters" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto">
-            {categories.map((key) => (
-              <TabsTrigger key={key} value={key} className="py-2.5 flex items-center gap-2 text-sm md:text-base flex-wrap justify-center">
-                 {icons[key as keyof typeof icons]}
-                {dictionary.categories[key]}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          <ScrollArea className="w-full whitespace-nowrap rounded-lg">
+            <TabsList className="inline-flex w-max">
+              {categories.map((key) => (
+                <TabsTrigger key={key} value={key} className="py-2.5 flex items-center gap-2 text-sm md:text-base">
+                  {icons[key as keyof typeof icons]}
+                  <span className='hidden md:inline'>{dictionary.categories[key]}</span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
           {categories.map((categoryKey) => (
             <TabsContent key={categoryKey} value={categoryKey}>
               <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 border-t border-border/70 mt-4">
