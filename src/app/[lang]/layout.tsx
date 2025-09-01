@@ -23,7 +23,7 @@ export default function LangLayout({
 }: LangLayoutProps) {
   return (
     <html lang={params.lang} dir={params.lang === 'ar' ? 'rtl' : 'ltr'}>
-      <body className="font-body antialiased bg-background text-foreground">
+      <body className="bg-background text-foreground">
         {children}
         <Toaster />
       </body>
