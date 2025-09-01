@@ -26,11 +26,11 @@ export default function RootLayout({
 }) {
   return (
     <html 
-      lang={params.lang ?? "en"} 
-      dir={params.lang === 'ar' ? 'rtl' : 'ltr'} 
+      lang={params?.lang ?? "en"} 
+      dir={params?.lang === 'ar' ? 'rtl' : 'ltr'} 
       className={`${literata.variable} ${ptSans.variable}`}
     >
-      <body>
+      <body className='font-body antialiased'>
         {children}
         <Toaster />
       </body>
