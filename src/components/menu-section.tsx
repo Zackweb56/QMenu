@@ -13,7 +13,13 @@ import { Soup, UtensilsCrossed, Cake, GlassWater } from 'lucide-react';
 import type { Translations, MenuItem } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { MenuItemModal } from './menu-item-modal';
-import { ScrollArea, ScrollBar } from './ui/scroll-area';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 type MenuSectionProps = {
   dictionary: Translations['menu'];
@@ -84,17 +90,31 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
           {dictionary.title}
         </h2>
         <Tabs defaultValue="starters" className="w-full">
-          <ScrollArea className="w-full whitespace-nowrap rounded-lg">
-            <TabsList className="inline-flex w-max">
-              {categories.map((key) => (
-                <TabsTrigger key={key} value={key} className="py-2.5 flex items-center gap-2 text-sm md:text-base">
-                  {icons[key as keyof typeof icons]}
-                  <span className='hidden md:inline'>{dictionary.categories[key]}</span>
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            <ScrollBar orientation="horizontal" />
-          </ScrollArea>
+          <div className="relative flex justify-center">
+            <Carousel
+              opts={{
+                align: "start",
+                dragFree: true,
+              }}
+              className="w-full max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl"
+            >
+              <CarouselContent>
+                  <TabsList className="inline-flex h-auto">
+                    {categories.map((key) => (
+                      <CarouselItem key={key} className="basis-auto">
+                        <TabsTrigger value={key} className="py-2.5 flex items-center gap-2 text-sm md:text-base">
+                           {icons[key as keyof typeof icons]}
+                           <span className='hidden md:inline'>{dictionary.categories[key]}</span>
+                        </TabsTrigger>
+                      </CarouselItem>
+                    ))}
+                  </TabsList>
+              </CarouselContent>
+              <CarouselPrevious className="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2" />
+              <CarouselNext className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2" />
+            </Carousel>
+          </div>
+
           {categories.map((categoryKey) => (
             <TabsContent key={categoryKey} value={categoryKey}>
               <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 border-t border-border/70 mt-4">
