@@ -43,11 +43,11 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem;
       </div>
       <div className="flex-grow">
         <div className="flex items-baseline">
-            <h4 className="font-headline text-lg text-foreground group-hover:text-primary transition-colors">{item.name}</h4>
+            <h4 className="font-headline text-base md:text-lg text-foreground group-hover:text-primary transition-colors">{item.name}</h4>
             {item.price && (
               <>
                 <span className="flex-grow border-b-2 border-dotted border-border/50 mx-2"></span>
-                <span className={cn("text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-2' : 'pe-2')}>
+                <span className={cn("text-base md:text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-2' : 'pe-2')}>
                   {item.price}
                 </span>
               </>
@@ -85,7 +85,7 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
         <Tabs defaultValue="starters" className="w-full">
           <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto">
             {categories.map((key) => (
-              <TabsTrigger key={key} value={key} className="py-2.5 flex items-center gap-2 text-base flex-wrap justify-center">
+              <TabsTrigger key={key} value={key} className="py-2.5 flex items-center gap-2 text-sm md:text-base flex-wrap justify-center">
                  {icons[key as keyof typeof icons]}
                 {dictionary.categories[key]}
               </TabsTrigger>

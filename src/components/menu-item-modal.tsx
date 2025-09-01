@@ -66,7 +66,7 @@ export function MenuItemModal({ isOpen, onClose, item, lang, dictionary }: MenuI
 
           <div className="p-6 flex flex-col">
             <DialogHeader className='text-left'>
-              <DialogTitle className="text-2xl font-headline">{item.name}</DialogTitle>
+              <DialogTitle className="text-xl md:text-2xl font-headline">{item.name}</DialogTitle>
               <DialogDescription className="pt-2 text-base">
                 {item.description}
               </DialogDescription>
@@ -91,7 +91,7 @@ export function MenuItemModal({ isOpen, onClose, item, lang, dictionary }: MenuI
 
               {item.price && (
                 <div className="flex items-center justify-end">
-                   <Badge variant="default" className='text-lg'>{item.price}</Badge>
+                   <Badge variant="default" className='text-base md:text-lg'>{item.price}</Badge>
                 </div>
               )}
 
