@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/carousel"
 import { useCart } from '@/context/cart-context';
 import { Button } from './ui/button';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 type MenuSectionProps = {
   dictionary: Translations['menu'] & Translations['cart'];
@@ -35,8 +36,9 @@ const icons = {
   drinks: <GlassWater className="w-5 h-5" />,
 };
 
-function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem; lang: string; onSelect: () => void; dictionary: Translations['menu'] }) {
+function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem; lang: string; onSelect: () => void; dictionary: Translations['menu'] & Translations['cart'] }) {
   const { addItem } = useCart();
+  const isMobile = useIsMobile();
   const hasOptions = !!item.sizes || !!item.addOns;
 
   const handleDirectAdd = (e: React.MouseEvent) => {
@@ -69,7 +71,7 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem;
             <h4 className="font-headline text-lg md:text-xl text-foreground group-hover:text-primary transition-colors truncate">{item.name}</h4>
             {item.price && (
                 <span className={cn("text-base md:text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-2' : 'pe-2')}>
-                  {item.price}
+                  {item.price} {dictionary.currency}
                 </span>
             )}
         </div>
@@ -80,8 +82,9 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem;
         )}
       </div>
        <div className="flex items-center h-full ms-2">
-        <Button size="icon" variant="ghost" className="rounded-full w-10 h-10 group-hover:bg-primary/10" onClick={handleDirectAdd}>
+        <Button size={isMobile ? "icon" : "default"} variant="ghost" className="rounded-full w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 group-hover:bg-primary/10" onClick={handleDirectAdd}>
           <PlusCircle className="w-6 h-6 text-primary group-hover:scale-110 transition-transform"/>
+          <span className="hidden md:inline ms-2 font-semibold">{dictionary.add_to_order_button}</span>
         </Button>
       </div>
     </div>
@@ -111,7 +114,7 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
           <div className="relative flex justify-center">
             <Carousel
               opts={{
-                align: "start",
+                align: "center",
                 dragFree: true,
               }}
               className="w-full max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl"

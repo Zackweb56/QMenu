@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -40,8 +40,14 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedAddOns, setSelectedAddOns] = useState<{ [key: string]: boolean }>({});
-
+  
   const images = useMemo(() => item ? (Array.isArray(item.imageUrl) ? item.imageUrl : [item.imageUrl]) : [], [item]);
+
+  useEffect(() => {
+    if (item && item.sizes) {
+      setSelectedSize(Object.keys(item.sizes)[0]);
+    }
+  }, [item]);
 
   const handleSizeChange = (size: string) => {
     setSelectedSize(size);
@@ -89,7 +95,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
         setSelectedAddOns({});
       }
     }}>
-      <DialogContent dir="ltr" className="sm:max-w-3xl p-0">
+      <DialogContent className="sm:max-w-3xl p-0">
         <div className="grid md:grid-cols-2">
           <div className="relative h-64 md:h-full">
             <Carousel className="w-full h-full">
@@ -116,11 +122,18 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
           </div>
 
           <div className="p-6 flex flex-col">
-            <DialogHeader className='text-left'>
-              <DialogTitle className="text-xl md:text-2xl font-headline">{item.name}</DialogTitle>
-              <DialogDescription className="pt-2 text-base">
-                {item.description}
-              </DialogDescription>
+            <DialogHeader>
+                <div className='flex justify-between items-start'>
+                    <div className='flex-grow'>
+                        <DialogTitle className="text-xl md:text-2xl font-headline">{item.name}</DialogTitle>
+                        <DialogDescription className="pt-2 text-base">
+                            {item.description}
+                        </DialogDescription>
+                    </div>
+                    {item.price && (
+                        <div className="text-xl font-bold text-primary whitespace-nowrap ps-4">{item.price} {dictionary.currency}</div>
+                    )}
+                </div>
             </DialogHeader>
 
             <Separator className="my-4" />
@@ -137,7 +150,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
                           <Label htmlFor={size} className="flex items-baseline text-sm flex-grow ms-2 cursor-pointer">
                             <span className="capitalize font-medium">{size}</span>
                             <span className="flex-grow border-b-2 border-dotted border-border/50 mx-2"></span>
-                            <span className="font-semibold text-primary">{price}</span>
+                            <span className="font-semibold text-primary">{price} {dictionary.currency}</span>
                           </Label>
                         </div>
                       ))}
@@ -155,7 +168,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
                         <Checkbox id={addOn} onCheckedChange={() => handleAddOnToggle(addOn)} />
                         <Label htmlFor={addOn} className="flex justify-between items-center w-full ms-2 cursor-pointer">
                            <span>{addOn}</span>
-                           <span className="font-semibold text-primary/90">{price}</span>
+                           <span className="font-semibold text-primary/90">+{price} {dictionary.currency}</span>
                         </Label>
                       </div>
                     ))}
@@ -167,11 +180,11 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary }: MenuItemMod
             <DialogFooter className='mt-6 pt-6 border-t'>
                 <div className="w-full flex justify-between items-center">
                     <div className="flex items-center gap-2">
-                        <Button variant="outline" size="icon" onClick={() => setQuantity(q => Math.max(1, q - 1))}>
+                        <Button variant="outline" size="icon" className='rounded-full w-10 h-10' onClick={() => setQuantity(q => Math.max(1, q - 1))}>
                             <Minus className="h-4 w-4" />
                         </Button>
                         <span className="text-lg font-bold w-10 text-center">{quantity}</span>
-                        <Button variant="outline" size="icon" onClick={() => setQuantity(q => q + 1)}>
+                        <Button variant="outline" size="icon" className='rounded-full w-10 h-10' onClick={() => setQuantity(q => q + 1)}>
                             <Plus className="h-4 w-4" />
                         </Button>
                     </div>
