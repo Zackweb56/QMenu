@@ -1,7 +1,4 @@
-
 import type { Metadata } from 'next';
-import '../globals.css';
-import { Toaster } from "@/components/ui/toaster";
 import { getDictionary } from '@/lib/translations';
 
 type LangLayoutProps = {
@@ -22,11 +19,8 @@ export default function LangLayout({
   params,
 }: LangLayoutProps) {
   return (
-    <html lang={params.lang} dir={params.lang === 'ar' ? 'rtl' : 'ltr'}>
-      <body className="bg-background text-foreground">
+    <div lang={params.lang} dir={params.lang === 'ar' ? 'rtl' : 'ltr'}>
         {children}
-        <Toaster />
-      </body>
-    </html>
+    </div>
   );
 }

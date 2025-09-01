@@ -11,8 +11,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['"PT Sans"', 'sans-serif'],
-        headline: ['"Literata"', 'serif'],
+        body: ['var(--font-pt-sans)'],
+        headline: ['var(--font-literata)'],
       },
       colors: {
         background: 'hsl(var(--background))',
