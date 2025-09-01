@@ -15,6 +15,7 @@ export const translations: { [key: string]: Translations } = {
     menu: {
       title: "Our Menu",
       extras_question: "Do you want an extra?",
+      details_badge: "View Details",
       categories: {
         starters: "Starters",
         main_course: "Main Course",
@@ -62,6 +63,7 @@ export const translations: { [key: string]: Translations } = {
     menu: {
       title: "Notre Carte",
       extras_question: "Voulez-vous un supplément?",
+      details_badge: "Voir les détails",
       categories: {
         starters: "Entrées",
         main_course: "Plats Principaux",
@@ -109,6 +111,7 @@ export const translations: { [key: string]: Translations } = {
     menu: {
       title: "قائمتنا",
       extras_question: "هل تريد إضافة؟",
+      details_badge: "عرض التفاصيل",
       categories: {
         starters: "المقبلات",
         main_course: "الأطباق الرئيسية",

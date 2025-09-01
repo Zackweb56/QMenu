@@ -57,15 +57,15 @@ export function MenuItemModal({ isOpen, onClose, item, lang, dictionary }: MenuI
               </CarouselContent>
               {images.length > 1 && (
                 <>
-                  <CarouselPrevious className="absolute left-4" />
-                  <CarouselNext className="absolute right-4" />
+                  <CarouselPrevious className="absolute start-4" />
+                  <CarouselNext className="absolute end-4" />
                 </>
               )}
             </Carousel>
           </div>
 
           <div className="p-6 flex flex-col">
-            <DialogHeader>
+            <DialogHeader className={cn(lang === 'ar' && 'text-right')}>
               <DialogTitle className="text-2xl font-headline">{item.name}</DialogTitle>
               <DialogDescription className="pt-2 text-base">
                 {item.description}
@@ -90,14 +90,14 @@ export function MenuItemModal({ isOpen, onClose, item, lang, dictionary }: MenuI
               )}
 
               {item.price && (
-                <div className="flex items-center justify-end">
+                <div className={cn("flex items-center", lang === 'ar' ? 'justify-start' : 'justify-end')}>
                    <Badge variant="default" className='text-lg'>{item.price}</Badge>
                 </div>
               )}
 
               {item.addOns && (
                 <div className="mt-6">
-                  <h4 className="font-semibold text-foreground mb-3">{dictionary.extras_question}</h4>
+                  <h4 className={cn("font-semibold text-foreground mb-3", lang === 'ar' && 'text-right')}>{dictionary.extras_question}</h4>
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     {Object.entries(item.addOns).map(([addOn, price]) => (
                       <div key={addOn} className="bg-secondary/50 p-2 rounded-md flex justify-between items-center">

@@ -8,8 +8,7 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/components/ui/tabs';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Info } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { Soup, UtensilsCrossed, Cake, GlassWater } from 'lucide-react';
 import type { Translations, MenuItem } from '@/lib/types';
 import { cn } from '@/lib/utils';
@@ -27,7 +26,9 @@ const icons = {
   drinks: <GlassWater className="w-5 h-5" />,
 };
 
-function MenuItemDisplay({ item, lang, onSelect }: { item: MenuItem; lang: string; onSelect: () => void }) {
+function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem; lang: string; onSelect: () => void; dictionary: Translations['menu'] }) {
+  const hasOptions = !!item.sizes || !!item.addOns;
+
   return (
     <div className="py-6 flex gap-4 items-start cursor-pointer group" onClick={onSelect}>
       <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
@@ -54,32 +55,8 @@ function MenuItemDisplay({ item, lang, onSelect }: { item: MenuItem; lang: strin
         </div>
         <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
         
-        {item.sizes && (
-          <div className="text-sm text-foreground mt-2 space-y-1">
-             {Object.entries(item.sizes).map(([size, price]) => (
-              <div key={size} className="flex items-baseline">
-                <span className='capitalize'>{size}</span>
-                <span className="flex-grow border-b-2 border-dotted border-border/50 mx-2"></span>
-                <span className="font-semibold text-primary">{price}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {item.addOns && (
-          <Alert className="mt-4 bg-secondary/50 border-accent/50">
-            <Info className="h-4 w-4 text-accent" />
-            <AlertTitle className="text-accent">{item.addOnsLabel}</AlertTitle>
-            <AlertDescription>
-              <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
-                {Object.entries(item.addOns).map(([addOn, price]) => (
-                  <span key={addOn}>
-                    {addOn} ({price})
-                  </span>
-                ))}
-              </div>
-            </AlertDescription>
-          </Alert>
+        {hasOptions && (
+           <Badge variant="outline" className="mt-2">{dictionary.details_badge}</Badge>
         )}
       </div>
     </div>
@@ -101,7 +78,7 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
 
   return (
     <section className="py-12 md:py-16">
-      <div>
+      <div className='container mx-auto px-4'>
         <h2 className="text-3xl md:text-4xl font-headline text-center mb-8">
           {dictionary.title}
         </h2>
@@ -121,7 +98,8 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
                    <MenuItemDisplay 
                       key={index} 
                       item={item} 
-                      lang={lang} 
+                      lang={lang}
+                      dictionary={dictionary}
                       onSelect={() => handleItemClick(item)}
                     />
                 ))}
@@ -141,4 +119,3 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
     </section>
   );
 }
-

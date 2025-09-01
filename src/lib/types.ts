@@ -33,6 +33,7 @@ export interface Translations {
   menu: {
     title: string;
     extras_question: string;
+    details_badge: string;
     categories: {
       starters: string;
       main_course: string;
