@@ -1,5 +1,6 @@
 
 'use client';
+import { useState } from 'react';
 import Image from 'next/image';
 import {
   Tabs,
@@ -12,6 +13,7 @@ import { Info } from 'lucide-react';
 import { Soup, UtensilsCrossed, Cake, GlassWater } from 'lucide-react';
 import type { Translations, MenuItem } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import { MenuItemModal } from './menu-item-modal';
 
 type MenuSectionProps = {
   dictionary: Translations['menu'];
@@ -25,22 +27,22 @@ const icons = {
   drinks: <GlassWater className="w-5 h-5" />,
 };
 
-function MenuItemDisplay({ item, lang }: { item: MenuItem; lang: string }) {
+function MenuItemDisplay({ item, lang, onSelect }: { item: MenuItem; lang: string; onSelect: () => void }) {
   return (
-    <div className="py-6 flex gap-4 items-start">
+    <div className="py-6 flex gap-4 items-start cursor-pointer group" onClick={onSelect}>
       <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
         <Image
-          src={item.imageUrl}
+          src={Array.isArray(item.imageUrl) ? item.imageUrl[0] : item.imageUrl}
           alt={item.name}
           width={80}
           height={80}
-          className="rounded-full object-cover w-16 h-16 md:w-20 md:h-20 border-2 border-primary/20 shadow-sm"
+          className="rounded-lg object-cover w-16 h-16 md:w-20 md:h-20 border-2 border-primary/20 shadow-sm group-hover:scale-105 transition-transform duration-300"
           data-ai-hint={item.imageHint}
         />
       </div>
       <div className="flex-grow">
         <div className="flex items-baseline">
-            <h4 className="font-headline text-lg text-foreground">{item.name}</h4>
+            <h4 className="font-headline text-lg text-foreground group-hover:text-primary transition-colors">{item.name}</h4>
             {item.price && (
               <>
                 <span className="flex-grow border-b-2 border-dotted border-border/50 mx-2"></span>
@@ -85,7 +87,17 @@ function MenuItemDisplay({ item, lang }: { item: MenuItem; lang: string }) {
 }
 
 export function MenuSection({ dictionary, lang }: MenuSectionProps) {
+  const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
+
   const categories = Object.keys(dictionary.items) as (keyof typeof dictionary.items)[];
+
+  const handleItemClick = (item: MenuItem) => {
+    setSelectedItem(item);
+  };
+
+  const closeModal = () => {
+    setSelectedItem(null);
+  };
 
   return (
     <section className="py-12 md:py-16">
@@ -106,13 +118,27 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
             <TabsContent key={categoryKey} value={categoryKey}>
               <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 border-t border-border/70 mt-4">
                 {Object.values(dictionary.items[categoryKey]).map((item, index) => (
-                   <MenuItemDisplay key={index} item={item} lang={lang} />
+                   <MenuItemDisplay 
+                      key={index} 
+                      item={item} 
+                      lang={lang} 
+                      onSelect={() => handleItemClick(item)}
+                    />
                 ))}
               </div>
             </TabsContent>
           ))}
         </Tabs>
       </div>
+
+      <MenuItemModal 
+        isOpen={!!selectedItem} 
+        onClose={closeModal} 
+        item={selectedItem} 
+        lang={lang}
+        dictionary={{ extras_question: dictionary.extras_question }}
+      />
     </section>
   );
 }
+

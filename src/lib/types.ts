@@ -1,3 +1,4 @@
+
 export interface MenuItem {
   name: string;
   description: string;
@@ -11,7 +12,7 @@ export interface MenuItem {
   };
   addOns?: { [key: string]: string };
   addOnsLabel?: string;
-  imageUrl: string;
+  imageUrl: string | string[];
   imageHint: string;
 }
 
@@ -31,6 +32,7 @@ export interface Translations {
   };
   menu: {
     title: string;
+    extras_question: string;
     categories: {
       starters: string;
       main_course: string;
