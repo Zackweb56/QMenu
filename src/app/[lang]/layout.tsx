@@ -8,8 +8,6 @@ const literata = Literata({
   subsets: ['latin'],
   variable: '--font-literata',
   display: 'swap',
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
 });
 
 const ptSans = PT_Sans({
@@ -42,7 +40,7 @@ export default function LangLayout({
       dir={params.lang === 'ar' ? 'rtl' : 'ltr'}
       className={`${literata.variable} ${ptSans.variable}`}
     >
-      <body className='font-body antialiased'>
+      <body className='bg-background text-foreground font-body antialiased'>
         {children}
         <Toaster />
       </body>
