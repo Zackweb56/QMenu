@@ -12,6 +12,11 @@ type LanguageSwitcherProps = {
   dictionary: Translations['header'];
 };
 
+type Language = {
+  key: 'en' | 'fr' | 'ar';
+  flag: string;
+};
+
 export function LanguageSwitcher({ lang, dictionary }: LanguageSwitcherProps) {
   const pathname = usePathname();
   const redirectedPathname = (locale: string) => {
@@ -21,25 +26,30 @@ export function LanguageSwitcher({ lang, dictionary }: LanguageSwitcherProps) {
     return segments.join('/');
   };
 
-  const languages: ('en' | 'fr' | 'ar')[] = ['en', 'fr', 'ar'];
+  const languages: Language[] = [
+    { key: 'en', flag: '🇬🇧' },
+    { key: 'fr', flag: '🇫🇷' },
+    { key: 'ar', flag: '🇲🇦' },
+  ];
 
   return (
-    <div className="flex gap-1">
-      {languages.map((locale) => (
+    <div className="flex gap-2">
+      {languages.map(({ key, flag }) => (
         <Button
-          key={locale}
+          key={key}
           asChild
-          variant={lang === locale ? 'default' : 'outline'}
+          variant={lang === key ? 'default' : 'outline'}
           size="sm"
           className={cn(
-            'px-3',
-            lang === locale
+            'rounded-full px-4',
+            lang === key
               ? 'bg-primary text-primary-foreground'
               : 'bg-background/50 text-foreground'
           )}
         >
-          <Link href={redirectedPathname(locale)}>
-            {dictionary[`lang_${locale}` as keyof typeof dictionary]}
+          <Link href={redirectedPathname(key)} className="flex items-center gap-2">
+            <span>{flag}</span>
+            <span>{dictionary[`lang_${key}` as keyof typeof dictionary]}</span>
           </Link>
         </Button>
       ))}

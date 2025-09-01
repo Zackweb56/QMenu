@@ -8,9 +8,9 @@ export const translations: { [key: string]: Translations } = {
     address: "123 Kasbah Street, Marrakech, Morocco",
     phone: "+212 5 24 38 86 11",
     header: {
-      lang_en: "EN",
-      lang_fr: "FR",
-      lang_ar: "AR",
+      lang_en: "English",
+      lang_fr: "French",
+      lang_ar: "Arabic",
     },
     menu: {
       title: "Our Menu",
@@ -54,9 +54,9 @@ export const translations: { [key: string]: Translations } = {
     address: "123 Rue de la Kasbah, Marrakech, Maroc",
     phone: "+212 5 24 38 86 11",
     header: {
-      lang_en: "EN",
-      lang_fr: "FR",
-      lang_ar: "AR",
+      lang_en: "Anglais",
+      lang_fr: "Français",
+      lang_ar: "Arabe",
     },
     menu: {
       title: "Notre Carte",
@@ -100,9 +100,9 @@ export const translations: { [key: string]: Translations } = {
     address: "123 شارع القصبة، مراكش، المغرب",
     phone: "+212 5 24 38 86 11",
     header: {
-      lang_en: "EN",
-      lang_fr: "FR",
-      lang_ar: "AR",
+      lang_en: "الإنجليزية",
+      lang_fr: "الفرنسية",
+      lang_ar: "العربية",
     },
     menu: {
       title: "قائمتنا",
