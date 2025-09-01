@@ -19,12 +19,18 @@ const ptSans = PT_Sans({
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { lang: 'en' | 'fr' | 'ar' };
 }) {
   return (
-    <html className={`${literata.variable} ${ptSans.variable}`}>
-      <body className="font-body bg-background text-foreground antialiased">
+    <html 
+      lang={params.lang ?? "en"} 
+      dir={params.lang === 'ar' ? 'rtl' : 'ltr'} 
+      className={`${literata.variable} ${ptSans.variable}`}
+    >
+      <body>
         {children}
         <Toaster />
       </body>
