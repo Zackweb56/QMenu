@@ -43,6 +43,9 @@ export function OrderReceiptDialog({ isOpen, onClose, cart, total, dictionary, r
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-sm p-0">
+        <DialogHeader className="p-4 pb-0">
+            <DialogTitle>Order Receipt</DialogTitle>
+        </DialogHeader>
         <div ref={receiptRef} className="bg-white text-black p-6 font-mono">
             <div className="text-center">
                 <h2 className="text-xl font-bold">{restaurantName}</h2>
@@ -87,4 +90,3 @@ export function OrderReceiptDialog({ isOpen, onClose, cart, total, dictionary, r
     </Dialog>
   );
 }
-
