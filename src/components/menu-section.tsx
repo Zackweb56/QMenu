@@ -6,7 +6,6 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Info } from 'lucide-react';
 import { Soup, UtensilsCrossed, Cake, GlassWater } from 'lucide-react';
@@ -81,11 +80,6 @@ function MenuItemDisplay({ item, lang }: { item: MenuItem; lang: string }) {
           </Alert>
         )}
       </div>
-      {item.badge && (
-        <Badge variant="default" className="absolute top-4 right-0 rtl:right-auto rtl:left-0 bg-accent text-accent-foreground">
-          {item.badge}
-        </Badge>
-      )}
     </div>
   );
 }
