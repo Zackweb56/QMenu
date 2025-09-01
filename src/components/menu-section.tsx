@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/carousel"
 import { useCart } from '@/context/cart-context';
 import { Button } from './ui/button';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 type MenuSectionProps = {
   dictionary: Translations['menu'];
@@ -39,7 +39,6 @@ const icons = {
 
 function MenuItemDisplay({ item, lang, onSelect, dictionary, cartDictionary }: { item: MenuItem; lang: string; onSelect: () => void; dictionary: Translations['menu']; cartDictionary: Translations['cart'] }) {
   const { addItem } = useCart();
-  const isMobile = useIsMobile();
   const hasOptions = !!item.sizes || !!item.addOns;
 
   const handleDirectAdd = (e: React.MouseEvent) => {
@@ -83,10 +82,18 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary, cartDictionary }: {
         )}
       </div>
        <div className="flex items-center h-full ms-2">
-        <Button size={isMobile ? "icon" : "default"} variant="ghost" className="rounded-full w-10 h-10 md:w-auto md:h-auto md:px-4 md:py-2 group-hover:bg-primary/10" onClick={handleDirectAdd}>
-          <PlusCircle className="w-6 h-6 text-primary group-hover:scale-110 transition-transform"/>
-          <span className="hidden md:inline ms-2 font-semibold">{cartDictionary.add_to_order_button}</span>
-        </Button>
+        <TooltipProvider>
+            <Tooltip>
+                <TooltipTrigger asChild>
+                    <Button size="icon" variant="ghost" className="rounded-full w-10 h-10 group-hover:bg-primary/10" onClick={handleDirectAdd}>
+                        <PlusCircle className="w-6 h-6 text-primary group-hover:scale-110 transition-transform"/>
+                    </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                    <p>{cartDictionary.add_to_order_button}</p>
+                </TooltipContent>
+            </Tooltip>
+        </TooltipProvider>
       </div>
     </div>
   );
