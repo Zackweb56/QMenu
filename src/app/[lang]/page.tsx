@@ -42,7 +42,7 @@ export default async function MenuPage({ params: { lang } }: MenuPageProps) {
         </div>
       </header>
 
-      <main className="flex-grow">
+      <main className="flex-grow container mx-auto px-4">
         <MenuSection dictionary={dict.menu} lang={lang} />
       </main>
 

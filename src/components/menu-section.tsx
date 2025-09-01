@@ -1,3 +1,4 @@
+
 'use client';
 import Image from 'next/image';
 import {
@@ -88,7 +89,7 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
 
   return (
     <section className="py-12 md:py-16">
-      <div className="container mx-auto px-4">
+      <div>
         <h2 className="text-3xl md:text-4xl font-headline text-center mb-8">
           {dictionary.title}
         </h2>
