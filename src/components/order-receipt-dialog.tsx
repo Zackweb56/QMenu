@@ -21,9 +21,11 @@ interface OrderReceiptDialogProps {
   total: number;
   dictionary: Translations['cart'];
   restaurantName: string;
+  address: string;
+  phone: string;
 }
 
-export function OrderReceiptDialog({ isOpen, onClose, cart, total, dictionary, restaurantName }: OrderReceiptDialogProps) {
+export function OrderReceiptDialog({ isOpen, onClose, cart, total, dictionary, restaurantName, address, phone }: OrderReceiptDialogProps) {
   const receiptRef = useRef<HTMLDivElement>(null);
 
   const handleDownloadPdf = () => {
@@ -77,8 +79,12 @@ export function OrderReceiptDialog({ isOpen, onClose, cart, total, dictionary, r
                 <span>{dictionary.total}</span>
                 <span>{total.toFixed(2)} {dictionary.currency}</span>
             </div>
-            <div className="text-center mt-6 text-sm">
+            <div className="border-t border-dashed border-black my-4"></div>
+            <div className="text-center mt-6 text-xs">
                 <p>Thank you for your order!</p>
+                <p className='mt-2'>{address}</p>
+                <p>{phone}</p>
+                <p className='font-bold mt-4'>Created by QMenu</p>
             </div>
         </div>
         <DialogFooter className='p-4 border-t bg-background'>

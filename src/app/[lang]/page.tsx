@@ -20,7 +20,12 @@ export default async function MenuPage({ params: { lang } }: MenuPageProps) {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <LanguageSwitcher lang={lang} dictionary={dict.header} />
-          <ShoppingCartDrawer dictionary={dict.cart} restaurantName={dict.restaurantName} />
+          <ShoppingCartDrawer 
+            dictionary={dict.cart} 
+            restaurantName={dict.restaurantName}
+            address={dict.address}
+            phone={dict.phone}
+          />
         </div>
       </header>
 

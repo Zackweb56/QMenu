@@ -19,7 +19,14 @@ import Image from 'next/image';
 import { ScrollArea } from './ui/scroll-area';
 import { OrderReceiptDialog } from './order-receipt-dialog';
 
-export function ShoppingCartDrawer({ dictionary, restaurantName }: { dictionary: Translations['cart'], restaurantName: string }) {
+interface ShoppingCartDrawerProps {
+  dictionary: Translations['cart'];
+  restaurantName: string;
+  address: string;
+  phone: string;
+}
+
+export function ShoppingCartDrawer({ dictionary, restaurantName, address, phone }: ShoppingCartDrawerProps) {
   const { cart, updateItemQuantity, removeItem, getTotalPrice, clearCart } = useCart();
   const totalPrice = getTotalPrice();
   const [isReceiptOpen, setIsReceiptOpen] = useState(false);
@@ -131,6 +138,8 @@ export function ShoppingCartDrawer({ dictionary, restaurantName }: { dictionary:
         total={totalPrice}
         dictionary={dictionary}
         restaurantName={restaurantName}
+        address={address}
+        phone={phone}
       />
     </>
   );
