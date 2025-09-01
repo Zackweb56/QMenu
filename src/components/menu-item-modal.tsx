@@ -38,7 +38,7 @@ export function MenuItemModal({ isOpen, onClose, item, lang, dictionary }: MenuI
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-2xl p-0">
+      <DialogContent dir="ltr" className="sm:max-w-2xl p-0">
         <div className="grid md:grid-cols-2">
           <div className="relative h-64 md:h-full">
             <Carousel className="w-full h-full">
@@ -65,7 +65,7 @@ export function MenuItemModal({ isOpen, onClose, item, lang, dictionary }: MenuI
           </div>
 
           <div className="p-6 flex flex-col">
-            <DialogHeader>
+            <DialogHeader className='text-left'>
               <DialogTitle className="text-2xl font-headline">{item.name}</DialogTitle>
               <DialogDescription className="pt-2 text-base">
                 {item.description}
