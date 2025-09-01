@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${literata.variable} ${ptSans.variable}`}>
+    <html className={`${literata.variable} ${ptSans.variable}`}>
       <body className="font-body bg-background text-foreground antialiased">
         {children}
         <Toaster />
