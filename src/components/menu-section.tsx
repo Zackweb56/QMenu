@@ -27,7 +27,7 @@ const icons = {
 
 function MenuItemDisplay({ item, lang }: { item: MenuItem; lang: string }) {
   return (
-    <div className="py-6 flex gap-4 items-start relative">
+    <div className="py-6 flex gap-4 items-start relative border-b border-border/70 md:border-b-0">
       <div className="w-24 h-24 flex-shrink-0">
         <Image
           src={item.imageUrl}
@@ -57,7 +57,7 @@ function MenuItemDisplay({ item, lang }: { item: MenuItem; lang: string }) {
           <div className="text-sm text-foreground mt-2 space-y-1">
              {Object.entries(item.sizes).map(([size, price]) => (
               <div key={size} className="flex items-baseline">
-                <span>{size}</span>
+                <span className='capitalize'>{size}</span>
                 <span className="flex-grow border-b-2 border-dotted border-border/50 mx-2"></span>
                 <span className="font-semibold text-primary">{price}</span>
               </div>
@@ -109,7 +109,7 @@ export function MenuSection({ dictionary, lang }: MenuSectionProps) {
           </TabsList>
           {categories.map((categoryKey) => (
             <TabsContent key={categoryKey} value={categoryKey}>
-              <div className="divide-y divide-border/70">
+              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8">
                 {Object.values(dictionary.items[categoryKey]).map((item, index) => (
                    <MenuItemDisplay key={index} item={item} lang={lang} />
                 ))}
