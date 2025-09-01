@@ -41,7 +41,7 @@ export function LanguageSwitcher({ lang, dictionary }: LanguageSwitcherProps) {
           variant={lang === key ? 'default' : 'outline'}
           size="sm"
           className={cn(
-            'rounded-full px-4',
+            'rounded-full px-3 md:px-4',
             lang === key
               ? 'bg-primary text-primary-foreground'
               : 'bg-background/50 text-foreground'
@@ -49,7 +49,7 @@ export function LanguageSwitcher({ lang, dictionary }: LanguageSwitcherProps) {
         >
           <Link href={redirectedPathname(key)} className="flex items-center gap-2">
             <span>{flag}</span>
-            <span>{dictionary[`lang_${key}` as keyof typeof dictionary]}</span>
+            <span className="hidden md:inline">{dictionary[`lang_${key}` as keyof typeof dictionary]}</span>
           </Link>
         </Button>
       ))}
