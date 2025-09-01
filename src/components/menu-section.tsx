@@ -1,4 +1,3 @@
-
 'use client';
 import Image from 'next/image';
 import {
@@ -8,6 +7,8 @@ import {
   TabsTrigger,
 } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Info } from 'lucide-react';
 import { Soup, UtensilsCrossed, Cake, GlassWater } from 'lucide-react';
 import type { Translations, MenuItem } from '@/lib/types';
 import { cn } from '@/lib/utils';
@@ -38,31 +39,46 @@ function MenuItemDisplay({ item, lang }: { item: MenuItem; lang: string }) {
         />
       </div>
       <div className="flex-grow">
-        <h4 className="font-headline text-lg text-foreground">{item.name}</h4>
+        <div className="flex items-baseline">
+            <h4 className="font-headline text-lg text-foreground">{item.name}</h4>
+        </div>
         <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
         
+        {item.price && (
+          <div className="flex items-baseline mt-2">
+            <span className="flex-grow border-b-2 border-dotted border-border/50 mx-2"></span>
+            <span className={cn("text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-2' : 'pe-2')}>
+              {item.price}
+            </span>
+          </div>
+        )}
+
         {item.sizes && (
-          <div className="text-sm text-foreground mt-2 flex gap-4">
+          <div className="text-sm text-foreground mt-2 space-y-1">
              {Object.entries(item.sizes).map(([size, price]) => (
-              <span key={size}>{size}: {price}</span>
+              <div key={size} className="flex items-baseline">
+                <span>{size}</span>
+                <span className="flex-grow border-b-2 border-dotted border-border/50 mx-2"></span>
+                <span className="font-semibold text-primary">{price}</span>
+              </div>
             ))}
           </div>
         )}
 
         {item.addOns && (
-          <div className="text-sm text-muted-foreground mt-2">
-            <span className="font-semibold text-foreground">{item.addOnsLabel}</span>{' '}
-            {Object.entries(item.addOns).map(([addOn, price], index) => (
-              <span key={addOn}>
-                {addOn} ({price})
-                {index < Object.keys(item.addOns!).length - 1 ? ', ' : ''}
-              </span>
-            ))}
-          </div>
+          <Alert className="mt-4 bg-secondary/50">
+            <Info className="h-4 w-4" />
+            <AlertTitle>{item.addOnsLabel}</AlertTitle>
+            <AlertDescription>
+              {Object.entries(item.addOns).map(([addOn, price], index) => (
+                <span key={addOn}>
+                  {addOn} ({price})
+                  {index < Object.keys(item.addOns!).length - 1 ? ', ' : ''}
+                </span>
+              ))}
+            </AlertDescription>
+          </Alert>
         )}
-      </div>
-      <div className={cn("text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-4' : 'pe-4')}>
-        {item.price}
       </div>
       {item.badge && (
         <Badge variant="default" className="absolute top-4 right-0 rtl:right-auto rtl:left-0 bg-accent text-accent-foreground">

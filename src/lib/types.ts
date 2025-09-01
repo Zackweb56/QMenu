@@ -1,10 +1,14 @@
-
 export interface MenuItem {
   name: string;
   description: string;
   price?: string;
   badge?: string;
-  sizes?: { [key: string]: string };
+  sizes?: {
+    small?: string;
+    medium?: string;
+    large?: string;
+    [key: string]: string | undefined;
+  };
   addOns?: { [key: string]: string };
   addOnsLabel?: string;
   imageUrl: string;

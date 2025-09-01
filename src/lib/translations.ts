@@ -29,8 +29,8 @@ export const translations: { [key: string]: Translations } = {
         main_course: {
           tagine: { name: "Lamb Tagine with Prunes", description: "Slow-cooked lamb with sweet prunes and toasted almonds.", price: "180 DH", badge: "Chef's Special", imageUrl: "https://picsum.photos/100/100", imageHint: "food tagine" },
           couscous: { name: "Royal Couscous", description: "Fluffy couscous served with seven vegetables, lamb, and chicken.", price: "200 DH", imageUrl: "https://picsum.photos/100/100", imageHint: "couscous dish" },
-          steak: { name: "Grilled Sirloin Steak", description: "Served with seasonal vegetables and your choice of sauce.", price: "220 DH", addOnsLabel: "Add:", addOns: { "Shrimp": "+80 DH", "Lobster Tail": "+150 DH" }, imageUrl: "https://picsum.photos/100/100", imageHint: "grilled steak" },
-          pizza: { name: "Atlas Pizza", description: "Spicy merguez sausage, olives, and local cheese.", sizes: { "Medium": "120 DH", "Large": "160 DH" }, imageUrl: "https://picsum.photos/100/100", imageHint: "pizza slice" },
+          steak: { name: "Grilled Sirloin Steak", description: "Served with seasonal vegetables and your choice of sauce.", price: "220 DH", addOnsLabel: "Extras", addOns: { "Shrimp": "+80 DH", "Lobster Tail": "+150 DH" }, imageUrl: "https://picsum.photos/100/100", imageHint: "grilled steak" },
+          pizza: { name: "Atlas Pizza", description: "Spicy merguez sausage, olives, and local cheese.", sizes: { "small": "90 DH", "medium": "120 DH", "large": "160 DH" }, imageUrl: "https://picsum.photos/100/100", imageHint: "pizza slice" },
         },
         desserts: {
           orange_cinnamon: { name: "Orange with Cinnamon", description: "Fresh orange slices sprinkled with sweet cinnamon.", price: "40 DH", imageUrl: "https://picsum.photos/100/100", imageHint: "orange slices" },
@@ -75,8 +75,8 @@ export const translations: { [key: string]: Translations } = {
         main_course: {
           tagine: { name: "Tagine d'Agneau aux Pruneaux", description: "Agneau mijoté avec des pruneaux sucrés et des amandes grillées.", price: "180 DH", badge: "Spécialité du Chef", imageUrl: "https://picsum.photos/100/100", imageHint: "food tagine" },
           couscous: { name: "Couscous Royal", description: "Couscous moelleux servi avec sept légumes, agneau et poulet.", price: "200 DH", imageUrl: "https://picsum.photos/100/100", imageHint: "couscous dish" },
-          steak: { name: "Entrecôte Grillée", description: "Servie avec des légumes de saison et une sauce au choix.", price: "220 DH", addOnsLabel: "Ajouter :", addOns: { "Crevettes": "+80 DH", "Queue de homard": "+150 DH" }, imageUrl: "https://picsum.photos/100/100", imageHint: "grilled steak" },
-          pizza: { name: "Pizza Atlas", description: "Saucisse merguez épicée, olives et fromage local.", sizes: { "Moyenne": "120 DH", "Grande": "160 DH" }, imageUrl: "https://picsum.photos/100/100", imageHint: "pizza slice" },
+          steak: { name: "Entrecôte Grillée", description: "Servie avec des légumes de saison et une sauce au choix.", price: "220 DH", addOnsLabel: "Suppléments", addOns: { "Crevettes": "+80 DH", "Queue de homard": "+150 DH" }, imageUrl: "https://picsum.photos/100/100", imageHint: "grilled steak" },
+          pizza: { name: "Pizza Atlas", description: "Saucisse merguez épicée, olives et fromage local.", sizes: { "petite": "90 DH", "moyenne": "120 DH", "grande": "160 DH" }, imageUrl: "https://picsum.photos/100/100", imageHint: "pizza slice" },
         },
         desserts: {
           orange_cinnamon: { name: "Orange à la Cannelle", description: "Tranches d'orange fraîches saupoudrées de cannelle douce.", price: "40 DH", imageUrl: "https://picsum.photos/100/100", imageHint: "orange slices" },
@@ -121,8 +121,8 @@ export const translations: { [key: string]: Translations } = {
         main_course: {
           tagine: { name: "طاجين لحم بالبرقوق", description: "لحم مطبوخ ببطء مع البرقوق الحلو واللوز المحمص.", price: "180 د.م.", badge: "طبق الشيف", imageUrl: "https://picsum.photos/100/100", imageHint: "food tagine" },
           couscous: { name: "كسكس ملكي", description: "كسكس ناعم يقدم مع سبع خضروات ولحم ودجاج.", price: "200 د.م.", imageUrl: "https://picsum.photos/100/100", imageHint: "couscous dish" },
-          steak: { name: "شريحة لحم مشوية", description: "تقدم مع خضروات موسمية وصلصة من اختيارك.", price: "220 د.م.", addOnsLabel: "إضافة:", addOns: { "جمبري": "+80 د.م.", "ذيل الكركند": "+150 د.م." }, imageUrl: "https://picsum.photos/100/100", imageHint: "grilled steak" },
-          pizza: { name: "بيتزا أطلس", description: "نقانق المرجاز الحارة والزيتون والجبن المحلي.", sizes: { "متوسطة": "120 د.م.", "كبيرة": "160 د.م." }, imageUrl: "https://picsum.photos/100/100", imageHint: "pizza slice" },
+          steak: { name: "شريحة لحم مشوية", description: "تقدم مع خضروات موسمية وصلصة من اختيارك.", price: "220 د.م.", addOnsLabel: "إضافات", addOns: { "جمبري": "+80 د.م.", "ذيل الكركند": "+150 د.م." }, imageUrl: "https://picsum.photos/100/100", imageHint: "grilled steak" },
+          pizza: { name: "بيتزا أطلس", description: "نقانق المرجاز الحارة والزيتون والجبن المحلي.", sizes: { "صغيرة": "90 د.م.", "متوسطة": "120 د.م.", "كبيرة": "160 د.م." }, imageUrl: "https://picsum.photos/100/100", imageHint: "pizza slice" },
         },
         desserts: {
           orange_cinnamon: { name: "برتقال بالقرفة", description: "شرائح برتقال طازجة مرشوشة بالقرفة الحلوة.", price: "40 د.م.", imageUrl: "https://picsum.photos/100/100", imageHint: "orange slices" },
