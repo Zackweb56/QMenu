@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         body: ['var(--font-pt-sans)'],
         headline: ['var(--font-literata)'],
+        mono: ['var(--font-roboto-mono)'],
       },
       colors: {
         background: 'hsl(var(--background))',

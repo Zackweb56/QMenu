@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { getDictionary } from '@/lib/translations';
 import '../globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { Literata, PT_Sans } from 'next/font/google';
+import { Literata, PT_Sans, Roboto_Mono } from 'next/font/google';
 import { CartProvider } from '@/context/cart-context';
 
 const literata = Literata({
@@ -16,6 +16,12 @@ const ptSans = PT_Sans({
   variable: '--font-pt-sans',
   display: 'swap',
   weight: ['400', '700'],
+});
+
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',
+  display: 'swap',
 });
 
 type LangLayoutProps = {
@@ -39,7 +45,7 @@ export default function LangLayout({
     <html
       lang={params.lang ?? 'en'}
       dir={params.lang === 'ar' ? 'rtl' : 'ltr'}
-      className={`${literata.variable} ${ptSans.variable}`}
+      className={`${literata.variable} ${ptSans.variable} ${robotoMono.variable}`}
     >
       <body className='bg-background text-foreground font-body antialiased'>
         <CartProvider>
