@@ -41,7 +41,7 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem;
           data-ai-hint={item.imageHint}
         />
       </div>
-      <div className="flex-grow">
+      <div className="flex-grow overflow-hidden">
         <div className="flex items-baseline">
             <h4 className="font-headline text-base md:text-lg text-foreground group-hover:text-primary transition-colors">{item.name}</h4>
             {item.price && (
@@ -53,7 +53,7 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary }: { item: MenuItem;
               </>
             )}
         </div>
-        <p className="text-muted-foreground text-sm mt-1">{item.description}</p>
+        <p className="text-muted-foreground text-sm mt-1 truncate md:whitespace-normal">{item.description}</p>
         
         {hasOptions && (
            <Badge variant="outline" className="mt-2">{dictionary.details_badge}</Badge>
