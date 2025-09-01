@@ -5,20 +5,20 @@
 
 @layer base {
   :root {
-    --background: 30 67% 94%;
+    --background: 26 50% 95%; /* Light Orange */
     --foreground: 28 25% 25%;
-    --card: 30 67% 94%;
+    --card: 26 50% 95%;
     --card-foreground: 28 25% 25%;
-    --popover: 30 67% 94%;
+    --popover: 26 50% 95%;
     --popover-foreground: 28 25% 25%;
-    --primary: 28 80% 52%;
-    --primary-foreground: 30 100% 98%;
+    --primary: 28 80% 52%; /* Saturated Vibrant Orange */
+    --primary-foreground: 20 0% 98%;
     --secondary: 30 50% 90%;
     --secondary-foreground: 28 25% 25%;
     --muted: 30 40% 85%;
     --muted-foreground: 28 25% 45%;
-    --accent: 20 100% 41%;
-    --accent-foreground: 30 100% 98%;
+    --accent: 16 84% 47%; /* Reddish-Orange */
+    --accent-foreground: 20 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 30 30% 80%;
@@ -41,18 +41,18 @@
   }
   .dark {
     --background: 20 10% 10%;
-    --foreground: 30 67% 94%;
+    --foreground: 26 50% 95%;
     --card: 20 10% 10%;
-    --card-foreground: 30 67% 94%;
+    --card-foreground: 26 50% 95%;
     --popover: 20 10% 10%;
-    --popover-foreground: 30 67% 94%;
+    --popover-foreground: 26 50% 95%;
     --primary: 28 80% 52%;
     --primary-foreground: 20 10% 5%;
     --secondary: 20 10% 15%;
-    --secondary-foreground: 30 67% 94%;
+    --secondary-foreground: 26 50% 95%;
     --muted: 20 10% 20%;
-    --muted-foreground: 30 67% 80%;
-    --accent: 20 100% 41%;
+    --muted-foreground: 26 50% 80%;
+    --accent: 16 84% 47%;
     --accent-foreground: 20 10% 5%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
