@@ -42,7 +42,7 @@ export default async function MenuPage({ params: { lang } }: MenuPageProps) {
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="container mx-auto px-4 relative">
-            <div className="max-w-2xl mx-auto bg-background/80 backdrop-blur-sm p-6 md:p-8 rounded-xl border border-border/20 shadow-lg">
+            <div className="max-w-2xl mx-auto bg-background/80 p-6 md:p-8 rounded-xl border border-border/20 shadow-lg backdrop-blur-sm">
                 <div className="flex flex-col items-center gap-4">
                     <Logo className="w-24 h-24 text-primary" />
                     <div>
