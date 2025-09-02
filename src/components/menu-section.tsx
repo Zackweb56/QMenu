@@ -9,7 +9,7 @@ import {
   TabsTrigger,
 } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Soup, UtensilsCrossed, Cake, GlassWater, PlusCircle } from 'lucide-react';
+import { Soup, UtensilsCrossed, Cake, GlassWater, PlusCircle, Pizza } from 'lucide-react';
 import type { Translations, MenuItem } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { MenuItemModal } from './menu-item-modal';
@@ -33,6 +33,7 @@ type MenuSectionProps = {
 const icons = {
   starters: <Soup className="w-5 h-5" />,
   main_course: <UtensilsCrossed className="w-5 h-5" />,
+  tacos: <Pizza className="w-5 h-5" />,
   desserts: <Cake className="w-5 h-5" />,
   drinks: <GlassWater className="w-5 h-5" />,
 };

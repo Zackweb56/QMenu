@@ -44,12 +44,14 @@ export interface Translations {
     categories: {
       starters: string;
       main_course: string;
+      tacos: string;
       desserts: string;
       drinks: string;
     };
     items: {
       starters: MenuCategory;
       main_course: MenuCategory;
+      tacos: MenuCategory;
       desserts: MenuCategory;
       drinks: MenuCategory;
     };

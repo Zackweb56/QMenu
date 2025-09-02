@@ -21,6 +21,7 @@ export const uiTranslations: UiTranslations = {
       categories: {
         starters: "Starters",
         main_course: "Main Course",
+        tacos: "Tacos",
         desserts: "Desserts",
         drinks: "Drinks",
       },
@@ -58,6 +59,7 @@ export const uiTranslations: UiTranslations = {
       categories: {
         starters: "Entrées",
         main_course: "Plats Principaux",
+        tacos: "Tacos",
         desserts: "Desserts",
         drinks: "Boissons",
       },
@@ -95,6 +97,7 @@ export const uiTranslations: UiTranslations = {
       categories: {
         starters: "المقبلات",
         main_course: "الأطباق الرئيسية",
+        tacos: "تاكوس",
         desserts: "الحلويات",
         drinks: "المشروبات",
       },

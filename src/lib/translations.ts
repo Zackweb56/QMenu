@@ -8,6 +8,7 @@ function translateMenuData(data: MenuCategoryData[], lang: 'en' | 'fr' | 'ar'): 
     const translatedItems: Translations['menu']['items'] = {
         starters: {},
         main_course: {},
+        tacos: {},
         desserts: {},
         drinks: {},
     };
@@ -20,6 +21,7 @@ function translateMenuData(data: MenuCategoryData[], lang: 'en' | 'fr' | 'ar'): 
                 ...itemData,
                 name: itemData.name[lang],
                 description: itemData.description[lang],
+                price: itemData.price?.toString(),
                 sizes: itemData.sizes ? Object.entries(itemData.sizes).reduce((acc, [key, value]) => {
                     acc[key] = value.toString();
                     return acc;
