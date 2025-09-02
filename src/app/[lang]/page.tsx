@@ -1,5 +1,5 @@
 
-import { getDictionary } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { Logo } from '@/components/logo';
 import { MenuSection } from '@/components/menu-section';
@@ -13,7 +13,7 @@ type MenuPageProps = {
 };
 
 export default async function MenuPage({ params: { lang } }: MenuPageProps) {
-  const dict = getDictionary(lang);
+  const dict = getTranslations(lang);
 
   return (
     <div className="flex flex-col min-h-screen">

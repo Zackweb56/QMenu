@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getDictionary } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations';
 import '../globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Literata, PT_Sans, Roboto_Mono } from 'next/font/google';
@@ -30,7 +30,7 @@ type LangLayoutProps = {
 };
 
 export async function generateMetadata({ params }: LangLayoutProps): Promise<Metadata> {
-  const dict = getDictionary(params.lang);
+  const dict = getTranslations(params.lang);
   return {
     title: dict.restaurantName,
     description: dict.restaurantSubtitle,

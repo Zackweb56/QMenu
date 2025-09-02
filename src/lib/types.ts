@@ -20,7 +20,7 @@ export interface CartItem {
   unitPrice: string;
   totalPrice: number;
   selectedSize?: string | null;
-  selectedAddOns?: { [key: string]: string };
+  selectedAddOns?: { [key:string]: string };
 }
 
 export interface MenuCategory {
@@ -53,6 +53,7 @@ export interface Translations {
       desserts: MenuCategory;
       drinks: MenuCategory;
     };
+    size_prompt: string;
   };
   cart: {
     title: string;
