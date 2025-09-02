@@ -59,7 +59,12 @@ export default async function MenuPage({ params: { lang } }: MenuPageProps) {
         <MenuSection dictionary={dict.menu} cartDictionary={dict.cart} lang={lang} />
       </main>
 
-      <Footer copyrightText={dict.footer.copyright} />
+      <Footer 
+        copyrightText={dict.footer.copyright}
+        developerText={dict.footer.developer}
+        contactText={dict.footer.contact}
+        contactUrl={dict.footer.contactUrl}
+      />
     </div>
   );
 }

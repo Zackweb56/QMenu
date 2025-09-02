@@ -40,7 +40,10 @@ export const uiTranslations: UiTranslations = {
       currency: "DH",
     },
     footer: {
-      copyright: "Created by QMenu",
+      copyright: "© {year} QMenu. All rights reserved.",
+      developer: "Developed by zackwebdev.",
+      contact: "Contact Us",
+      contactUrl: "https://wa.me/212771615622",
     },
   },
   fr: {
@@ -79,7 +82,10 @@ export const uiTranslations: UiTranslations = {
       currency: "DH",
     },
     footer: {
-      copyright: "Créé par QMenu",
+      copyright: "© {year} QMenu. Tous droits réservés.",
+      developer: "Développé par zackwebdev.",
+      contact: "Contactez-nous",
+      contactUrl: "https://wa.me/212771615622",
     },
   },
   ar: {
@@ -118,7 +124,10 @@ export const uiTranslations: UiTranslations = {
       currency: "د.م.",
     },
     footer: {
-      copyright: "صنع بواسطة كيومنيو",
+      copyright: "© {year} QMenu. كل الحقوق محفوظة.",
+      developer: "تم تطويره بواسطة zackwebdev.",
+      contact: "اتصل بنا",
+      contactUrl: "https://wa.me/212771615622",
     },
   },
 };

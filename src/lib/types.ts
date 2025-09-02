@@ -72,5 +72,8 @@ export interface Translations {
   },
   footer: {
     copyright: string;
+    developer: string;
+    contact: string;
+    contactUrl: string;
   };
 }

@@ -40,163 +40,163 @@ export const menuData: MenuCategory[] = [
       { id: 'tagine', name: { en: "Lamb Tagine with Prunes", fr: "Tagine d'Agneau aux Pruneaux", ar: "طاجين لحم بالبرقوق" }, description: { en: "Slow-cooked lamb with sweet prunes and toasted almonds.", fr: "Agneau mijoté avec des pruneaux sucrés et des amandes grillées.", ar: "لحم مطبوخ ببطء مع البرقوق الحلو واللوز المحمص." }, price: 180, imageUrl: "https://picsum.photos/600/400", imageHint: "food tagine" },
       { id: 'couscous', name: { en: "Royal Couscous", fr: "Couscous Royal", ar: "كسكس ملكي" }, description: { en: "Fluffy couscous served with seven vegetables, lamb, and chicken.", fr: "Couscous moelleux servi avec sept légumes, agneau et poulet.", ar: "كسكس ناعم يقدم مع سبع خضروات ولحم ودجاج." }, price: 200, imageUrl: "https://picsum.photos/600/400", imageHint: "couscous dish" },
       { id: 'steak', name: { en: "Grilled Sirloin Steak", fr: "Entrecôte Grillée", ar: "شريحة لحم مشوية" }, description: { en: "Served with seasonal vegetables and your choice of sauce.", fr: "Servie avec des légumes de saison et une sauce au choix.", ar: "تقدم مع خضروات موسمية وصلصة من اختيارك." }, price: 220, addOns: { "Shrimp": 80, "Lobster Tail": 150 }, imageUrl: ["https://picsum.photos/600/400?random=1", "https://picsum.photos/600/400?random=2"], imageHint: "grilled steak" },
-      { id: 'pizza_main', name: { en: "Atlas Pizza", fr: "Pizza Atlas", ar: "بيتزا أطلس" }, description: { en: "Spicy merguez sausage, olives, and local cheese.", fr: "Saucisse merguez épicée, olives et fromage local.", ar: "نقانق المرجاز الحارة والزيتون والجبن المحلي." }, sizes: { "small": 90, "medium": 120, "large": 160 }, imageUrl: "https://picsum.photos/600/400", imageHint: "pizza slice" },
+      { id: 'pizza', name: { en: "Atlas Pizza", fr: "Pizza Atlas", ar: "بيتزا أطلس" }, description: { en: "Spicy merguez sausage, olives, and local cheese.", fr: "Saucisse merguez épicée, olives et fromage local.", ar: "نقانق المرجاز الحارة والزيتون والجبن المحلي." }, sizes: { "small": 90, "medium": 120, "large": 160 }, imageUrl: "https://picsum.photos/600/400", imageHint: "pizza slice" },
     ]
   },
   {
-    key: "pizza",
-    items: [
+    "key": "pizza",
+    "items": [
       {
-        id: "pizza_margherita",
-        name: {
-          en: "Margherita",
-          fr: "Margherita",
-          ar: "مارغيريتا"
+        "id": "pizza_margherita",
+        "name": {
+          "en": "Margherita",
+          "fr": "Margherita",
+          "ar": "مارغيريتا"
         },
-        description: {
-          en: "Classic pizza with tomato sauce, mozzarella, and fresh basil.",
-          fr: "Pizza classique avec sauce tomate, mozzarella et basilic frais.",
-          ar: "بيتزا كلاسيكية مع صلصة الطماطم والموزاريلا والريحان الطازج."
+        "description": {
+          "en": "Classic pizza with tomato sauce, mozzarella, and fresh basil.",
+          "fr": "Pizza classique avec sauce tomate, mozzarella et basilic frais.",
+          "ar": "بيتزا كلاسيكية مع صلصة الطماطم والموزاريلا والريحان الطازج."
         },
-        price": 65,
-        imageUrl": "https://picsum.photos/600/400?random=20",
-        imageHint": "classic margherita pizza"
+        "price": 65,
+        "imageUrl": "https://example.com/images/pizza_margherita.jpg",
+        "imageHint": "classic margherita pizza"
       },
       {
-        id: "pizza_pepperoni",
-        name: {
-          en: "Pepperoni",
-          fr: "Pepperoni",
-          ar": "بيبيروني"
+        "id": "pizza_pepperoni",
+        "name": {
+          "en": "Pepperoni",
+          "fr": "Pepperoni",
+          "ar": "بيبيروني"
         },
-        description: {
-          en: "Spicy pepperoni, mozzarella cheese, and tomato sauce.",
-          fr: "Pepperoni épicé, fromage mozzarella et sauce tomate.",
-          ar": "بيبيروني حار، جبنة موزاريلا، وصلصة طماطم."
+        "description": {
+          "en": "Spicy pepperoni, mozzarella cheese, and tomato sauce.",
+          "fr": "Pepperoni épicé, fromage mozzarella et sauce tomate.",
+          "ar": "بيبيروني حار، جبنة موزاريلا، وصلصة طماطم."
         },
-        sizes": {
+        "sizes": {
           "small": 70,
           "medium": 95,
           "large": 120
         },
-        addOns": {
+        "addOns": {
           "Extra Cheese": 10,
           "Extra Pepperoni": 15,
           "Olives": 8
         },
-        imageUrl": [
-          "https://picsum.photos/600/400?random=21",
-          "https://picsum.photos/600/400?random=22"
+        "imageUrl": [
+          "https://example.com/images/pizza_pepperoni_1.jpg",
+          "https://example.com/images/pizza_pepperoni_2.jpg"
         ],
-        imageHint": "pepperoni pizza with cheese"
+        "imageHint": "pepperoni pizza with cheese"
       },
       {
-        id: "pizza_hawaiian",
-        name": {
-          en: "Hawaiian",
-          fr: "Hawaïenne",
-          ar": "هاواي"
+        "id": "pizza_hawaiian",
+        "name": {
+          "en": "Hawaiian",
+          "fr": "Hawaïenne",
+          "ar": "هاواي"
         },
-        description": {
-          en: "Ham, pineapple, mozzarella, and tomato sauce for a sweet and savory taste.",
-          fr: "Jambon, ananas, mozzarella et sauce tomate pour un goût sucré et salé.",
-          ar": "لحم الخنزير، الأناناس، الموزاريلا، وصلصة الطماطم لمذاق حلو ولذيذ."
+        "description": {
+          "en": "Ham, pineapple, mozzarella, and tomato sauce for a sweet and savory taste.",
+          "fr": "Jambon, ananas, mozzarella et sauce tomate pour un goût sucré et salé.",
+          "ar": "لحم الخنزير، الأناناس، الموزاريلا، وصلصة الطماطم لمذاق حلو ولذيذ."
         },
-        sizes": {
+        "sizes": {
           "medium": 85,
           "large": 110
         },
-        imageUrl": "https://picsum.photos/600/400?random=23",
-        imageHint": "hawaiian pizza with pineapple"
+        "imageUrl": "https://example.com/images/pizza_hawaiian.jpg",
+        "imageHint": "hawaiian pizza with pineapple"
       },
       {
-        id: "pizza_supreme",
-        name": {
-          en: "Supreme",
-          fr: "Suprême",
-          ar": "سوبريم"
+        "id": "pizza_supreme",
+        "name": {
+          "en": "Supreme",
+          "fr": "Suprême",
+          "ar": "سوبريم"
         },
-        description": {
-          en: "Pepperoni, mushrooms, green peppers, onions, and mozzarella cheese.",
-          fr": "Pepperoni, champignons, poivrons verts, oignons et fromage mozzarella.",
-          ar": "بيبيروني، فطر، فلفل أخضر، بصل، وجبنة موزاريلا."
+        "description": {
+          "en": "Pepperoni, mushrooms, green peppers, onions, and mozzarella cheese.",
+          "fr": "Pepperoni, champignons, poivrons verts, oignons et fromage mozzarella.",
+          "ar": "بيبيروني، فطر، فلفل أخضر، بصل، وجبنة موزاريلا."
         },
-        sizes": {
+        "sizes": {
           "small": 80,
           "medium": 110,
           "large": 140,
           "x-large": 170
         },
-        addOns": {
+        "addOns": {
           "Extra Cheese": 12,
           "Extra Meat": 18,
           "Extra Vegetables": 10
         },
-        imageUrl": [
-          "https://picsum.photos/600/400?random=24",
-          "https://picsum.photos/600/400?random=25",
-          "https://picsum.photos/600/400?random=26"
+        "imageUrl": [
+          "https://example.com/images/pizza_supreme_1.jpg",
+          "https://example.com/images/pizza_supreme_2.jpg",
+          "https://example.com/images/pizza_supreme_3.jpg"
         ],
-        imageHint": "loaded supreme pizza"
+        "imageHint": "loaded supreme pizza"
       },
       {
-        id: "pizza_veggie",
-        name": {
-          en: "Veggie Delight",
-          fr": "Délice Végétarien",
-          ar": "فيجي ديلايت"
+        "id": "pizza_veggie",
+        "name": {
+          "en": "Veggie Delight",
+          "fr": "Délice Végétarien",
+          "ar": "فيجي ديلايت"
         },
-        description": {
-          en: "Mushrooms, onions, green peppers, olives, and tomatoes on a classic crust.",
-          fr": "Champignons, oignons, poivrons verts, olives et tomates sur une croûte classique.",
-          ar": "فطر، بصل، فلفل أخضر، زيتون، وطماطم على قشرة كلاسيكية."
+        "description": {
+          "en": "Mushrooms, onions, green peppers, olives, and tomatoes on a classic crust.",
+          "fr": "Champignons, oignons, poivrons verts, olives et tomates sur une croûte classique.",
+          "ar": "فطر، بصل، فلفل أخضر، زيتون، وطماطم على قشرة كلاسيكية."
         },
-        price": 75,
-        addOns": {
+        "price": 75,
+        "addOns": {
           "Extra Cheese": 10,
           "Extra Olives": 8,
           "Artichoke Hearts": 12
         },
-        imageUrl": "https://picsum.photos/600/400?random=27",
-        imageHint": "vegetarian pizza with colorful veggies"
+        "imageUrl": "https://example.com/images/pizza_veggie.jpg",
+        "imageHint": "vegetarian pizza with colorful veggies"
       },
       {
-        id: "pizza_bbq_chicken",
-        name": {
-          en: "BBQ Chicken",
-          fr": "Poulet BBQ",
-          ar": "دجاج باربكيو"
+        "id": "pizza_bbq_chicken",
+        "name": {
+          "en": "BBQ Chicken",
+          "fr": "Poulet BBQ",
+          "ar": "دجاج باربكيو"
         },
-        description": {
-          en: "Grilled chicken, red onions, cilantro, and tangy BBQ sauce.",
-          fr": "Poulet grillé, oignons rouges, coriandre et sauce BBQ piquante.",
-          ar": "دجاج مشوي، بصل أحمر، كزبرة، وصلصة باربكيو لاذعة."
+        "description": {
+          "en": "Grilled chicken, red onions, cilantro, and tangy BBQ sauce.",
+          "fr": "Poulet grillé, oignons rouges, coriandre et sauce BBQ piquante.",
+          "ar": "دجاج مشوي، بصل أحمر، كزبرة، وصلصة باربكيو لاذعة."
         },
-        sizes": {
+        "sizes": {
           "medium": 90,
           "large": 125
         },
-        imageUrl": [
-          "https://picsum.photos/600/400?random=28",
-          "https://picsum.photos/600/400?random=29"
+        "imageUrl": [
+          "https://example.com/images/pizza_bbq_1.jpg",
+          "https://example.com/images/pizza_bbq_2.jpg"
         ],
-        imageHint": "bbq chicken pizza with onions"
+        "imageHint": "bbq chicken pizza with onions"
       },
       {
-        id: "pizza_quattro_formaggi",
-        name": {
-          en: "Four Cheese",
-          fr": "Quattro Formaggi",
-          ar": "أربعة جبن"
+        "id": "pizza_quattro_formaggi",
+        "name": {
+          "en": "Four Cheese",
+          "fr": "Quattro Formaggi",
+          "ar": "أربعة جبن"
         },
-        description": {
-          en": "A blend of mozzarella, parmesan, gorgonzola, and ricotta cheeses.",
-          fr": "Un mélange de mozzarella, parmesan, gorgonzola et ricotta.",
-          ar": "مزيج من جبن الموزاريلا، البارميزان، الجورجونزولا، والريكوتا."
+        "description": {
+          "en": "A blend of mozzarella, parmesan, gorgonzola, and ricotta cheeses.",
+          "fr": "Un mélange de mozzarella, parmesan, gorgonzola et ricotta.",
+          "ar": "مزيج من جبن الموزاريلا، البارميزان، الجورجونزولا، والريكوتا."
         },
-        price": 85,
-        imageUrl": "https://picsum.photos/600/400?random=30",
-        imageHint": "four cheese white pizza"
+        "price": 85,
+        "imageUrl": "https://example.com/images/pizza_quattro.jpg",
+        "imageHint": "four cheese white pizza"
       }
     ]
   },
@@ -220,16 +220,16 @@ export const menuData: MenuCategory[] = [
           "medium": 32,
           "large": 45
         },
-        addOns": {
+        addOns: {
           "Extra Cheese": 5,
           "Extra Fries": 4,
           "Extra Chicken": 8
         },
-        imageUrl": [
+        imageUrl: [
           "https://picsum.photos/600/400?random=3",
           "https://picsum.photos/600/400?random=4"
         ],
-        imageHint": 'grilled chicken moroccan tacos'
+        imageHint: 'grilled chicken moroccan tacos'
       },
       {
         "id": "tacos_viande_hachee",
