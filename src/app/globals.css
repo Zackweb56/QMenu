@@ -89,3 +89,26 @@
     font-family: var(--font-literata);
   }
 }
+
+@layer utilities {
+  .bg-primary { background-color: #A0522D; }
+  .text-primary { color: #A0522D; }
+  .border-primary { border-color: #A0522D; }
+  .ring-primary { ring-color: #A0522D; }
+  .bg-primary-foreground { background-color: #FFFFFF; }
+  .text-primary-foreground { color: #FFFFFF; }
+  
+  .bg-secondary { background-color: #F5F5DC; }
+  .text-secondary-foreground { color: #3a3a3a; }
+
+  .bg-accent { background-color: #DEB887; }
+  .text-accent { color: #DEB887; }
+  .text-accent-foreground { color: #3a3a3a; }
+  
+  .bg-background { background-color: #FAF3E0; }
+  .text-foreground { color: #3a3a3a; }
+
+  .border-border { border-color: #e5e5e5; }
+  .bg-muted { background-color: #f5f5f5; }
+  .text-muted-foreground { color: #707070; }
+}
