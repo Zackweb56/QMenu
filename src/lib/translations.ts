@@ -8,6 +8,7 @@ function translateMenuData(data: MenuCategoryData[], lang: 'en' | 'fr' | 'ar'): 
     const translatedItems: Translations['menu']['items'] = {
         starters: {},
         main_course: {},
+        pizza: {},
         tacos: {},
         desserts: {},
         drinks: {},

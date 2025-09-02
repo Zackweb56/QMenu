@@ -44,6 +44,7 @@ export interface Translations {
     categories: {
       starters: string;
       main_course: string;
+      pizza: string;
       tacos: string;
       desserts: string;
       drinks: string;
@@ -51,6 +52,7 @@ export interface Translations {
     items: {
       starters: MenuCategory;
       main_course: MenuCategory;
+      pizza: MenuCategory;
       tacos: MenuCategory;
       desserts: MenuCategory;
       drinks: MenuCategory;
