@@ -5,26 +5,26 @@
 
 @layer base {
   :root {
-    --background: 48 83% 94%;
-    --foreground: 24 9.8% 10%;
-    --card: 48 83% 94%;
-    --card-background: 48 83% 94% / 0.8;
-    --card-foreground: 24 9.8% 10%;
-    --popover: 48 83% 94%;
-    --popover-foreground: 24 9.8% 10%;
-    --primary: 40 100% 50%;
-    --primary-foreground: 24 9.8% 10%;
-    --secondary: 40 33% 84%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 40 33% 84%;
-    --muted-foreground: 24 3.8% 46.1%;
-    --accent: 40 60% 70%;
-    --accent-foreground: 24 9.8% 10%;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-background: 0 0% 100% / 0.8;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 40 33% 84%;
-    --input: 40 33% 84%;
-    --ring: 40 100% 50%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
     --radius: 0.5rem;
   }
 
@@ -68,22 +68,22 @@
 }
 
 @layer utilities {
-  .bg-primary { background-color: #ffaa00; }
-  .text-primary { color: #ffaa00; }
-  .border-primary { border-color: #ffaa00; }
-  .ring-primary { ring-color: #ffaa00; }
+  .bg-primary { background-color: #000; }
+  .text-primary { color: #000; }
+  .border-primary { border-color: #000; }
+  .ring-primary { ring-color: #000; }
   .bg-primary-foreground { background-color: #FFFFFF; }
   .text-primary-foreground { color: #FFFFFF; }
   
-  .bg-secondary { background-color: #F5F5DC; }
-  .text-secondary-foreground { color: #3a3a3a; }
+  .bg-secondary { background-color: #f0f0f0; }
+  .text-secondary-foreground { color: #1a1a1a; }
 
-  .bg-accent { background-color: #DEB887; }
-  .text-accent { color: #DEB887; }
-  .text-accent-foreground { color: #3a3a3a; }
+  .bg-accent { background-color: #f0f0f0; }
+  .text-accent { color: #1a1a1a; }
+  .text-accent-foreground { color: #1a1a1a; }
   
-  .bg-background { background-color: #FAF3E0; }
-  .text-foreground { color: #3a3a3a; }
+  .bg-background { background-color: #FFFFFF; }
+  .text-foreground { color: #1a1a1a; }
 
   .border-border { border-color: #e5e5e5; }
   .bg-muted { background-color: #f5f5f5; }
