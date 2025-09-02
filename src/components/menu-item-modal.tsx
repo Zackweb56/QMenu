@@ -45,10 +45,17 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
   const images = useMemo(() => item ? (Array.isArray(item.imageUrl) ? item.imageUrl : [item.imageUrl]) : [], [item]);
 
   useEffect(() => {
-    if (item && item.sizes) {
-      setSelectedSize(Object.keys(item.sizes)[0]);
+    if (item) {
+        setQuantity(1);
+        if (item.sizes) {
+            setSelectedSize(Object.keys(item.sizes)[0]);
+        } else {
+            setSelectedSize(null);
+        }
+        setSelectedAddOns({});
     }
   }, [item]);
+
 
   const handleSizeChange = (size: string) => {
     setSelectedSize(size);
@@ -84,18 +91,31 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
     addItem(cartItem);
     onClose();
   };
+  
+  const currentTotalPrice = useMemo(() => {
+    if (!item) return 0;
+    
+    let basePrice = 0;
+    if (item.sizes && selectedSize && item.sizes[selectedSize]) {
+      basePrice = parseFloat(item.sizes[selectedSize]!);
+    } else if (item.price) {
+      basePrice = parseFloat(item.price);
+    }
+    
+    const addOnsPrice = Object.entries(selectedAddOns).reduce((total, [key, isSelected]) => {
+      if (isSelected && item.addOns && item.addOns[key]) {
+        return total + parseFloat(item.addOns[key]);
+      }
+      return total;
+    }, 0);
+
+    return (basePrice + addOnsPrice) * quantity;
+  }, [item, quantity, selectedSize, selectedAddOns]);
 
   if (!item) return null;
 
   return (
-    <Dialog open={isOpen} onOpenChange={(open) => {
-      if (!open) {
-        onClose();
-        setQuantity(1);
-        setSelectedSize(null);
-        setSelectedAddOns({});
-      }
-    }}>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-3xl p-0">
         <div className="grid md:grid-cols-2">
           <div className="relative h-64 md:h-full">
@@ -115,8 +135,8 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
               </CarouselContent>
               {images.length > 1 && (
                 <>
-                  <CarouselPrevious className="absolute start-4" />
-                  <CarouselNext className="absolute end-4" />
+                  <CarouselPrevious className="absolute start-4 top-1/2 -translate-y-1/2" />
+                  <CarouselNext className="absolute end-4 top-1/2 -translate-y-1/2" />
                 </>
               )}
             </Carousel>
@@ -131,9 +151,6 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
                             {item.description}
                         </DialogDescription>
                     </div>
-                    {item.price && (
-                        <div className="text-xl font-bold text-primary whitespace-nowrap ps-4">{item.price} {cartDictionary.currency}</div>
-                    )}
                 </div>
             </DialogHeader>
 
@@ -189,6 +206,11 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
                             <Plus className="h-4 w-4" />
                         </Button>
                     </div>
+                    
+                    <div className="flex-1 text-center">
+                        <p className="text-xl font-bold text-primary">{currentTotalPrice.toFixed(2)} {cartDictionary.currency}</p>
+                    </div>
+
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>
