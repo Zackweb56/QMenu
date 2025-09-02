@@ -26,6 +26,7 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Label } from './ui/label';
 import { Checkbox } from './ui/checkbox';
 import { useCart } from '@/context/cart-context';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 interface MenuItemModalProps {
   isOpen: boolean;
@@ -138,7 +139,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
 
             <Separator className="my-4" />
             
-            <div className="flex-grow space-y-6">
+            <div className="flex-grow space-y-6 overflow-y-auto max-h-[40vh] p-1">
               {item.sizes && (
                 <div>
                   <h4 className="font-semibold text-foreground mb-3">{dictionary.size_prompt}</h4>
@@ -188,9 +189,18 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
                             <Plus className="h-4 w-4" />
                         </Button>
                     </div>
-                    <Button onClick={handleAddToCart} size="lg" disabled={item.sizes && !selectedSize}>
-                        <Plus className="w-5 h-5 me-2" /> {cartDictionary.add_to_order_button}
-                    </Button>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button onClick={handleAddToCart} size="icon" className="rounded-full w-12 h-12" disabled={item.sizes && !selectedSize}>
+                              <Plus className="w-6 h-6" />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{cartDictionary.add_to_order_button}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
                 </div>
             </DialogFooter>
           </div>
