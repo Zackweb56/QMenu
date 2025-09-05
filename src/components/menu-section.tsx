@@ -9,7 +9,7 @@ import {
   TabsTrigger,
 } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Soup, UtensilsCrossed, Cake, GlassWater, PlusCircle, Pizza } from 'lucide-react';
+import { Soup, UtensilsCrossed, Cake, GlassWater, PlusCircle, Pizza, Fish, Sandwich, Beef } from 'lucide-react';
 import type { Translations, MenuItem } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { MenuItemModal } from './menu-item-modal';
@@ -31,10 +31,11 @@ type MenuSectionProps = {
 };
 
 const icons = {
-  starters: <Soup className="w-5 h-5" />,
-  main_course: <UtensilsCrossed className="w-5 h-5" />,
+
   pizza: <Pizza className="w-5 h-5" />,
-  tacos: <Pizza className="w-5 h-5" />,
+  tacos: <Sandwich className="w-5 h-5" />,   // closest icon to represent tacos/wraps
+  burger: <Beef className="w-5 h-5" />, 
+  sushi: <Fish className="w-5 h-5" />, 
   desserts: <Cake className="w-5 h-5" />,
   drinks: <GlassWater className="w-5 h-5" />,
 };
@@ -57,7 +58,7 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary, cartDictionary }: {
   };
   
   return (
-    <div className="py-6 flex gap-4 items-start cursor-pointer group" onClick={onSelect}>
+    <div className="py-6 flex gap-4 items-start cursor-pointer group transition-all border-b-2 border-border/60" onClick={onSelect}>
       <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
         <Image
           src={Array.isArray(item.imageUrl) ? item.imageUrl[0] : item.imageUrl}
@@ -69,32 +70,48 @@ function MenuItemDisplay({ item, lang, onSelect, dictionary, cartDictionary }: {
         />
       </div>
       <div className="flex-grow overflow-hidden">
-        <div className="flex justify-between items-baseline">
-            <h4 className="font-headline text-lg md:text-xl text-foreground group-hover:text-primary transition-colors truncate md:whitespace-normal">{item.name}</h4>
-            {item.price && (
-                <span className={cn("text-base md:text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-2' : 'pe-2')}>
-                  {item.price} {cartDictionary.currency}
-                </span>
-            )}
+        <div className="flex items-baseline w-full">
+          <h4 className="font-headline text-lg md:text-xl text-foreground group-hover:text-primary transition-colors truncate md:whitespace-normal">
+            {item.name}
+          </h4>
+          <div
+            className="flex-1 mx-2 border-b border-dotted"
+            style={{
+              minWidth: '2rem',
+              borderColor: '#b91c1c', // Tailwind red-700 for visibility
+              borderBottomWidth: '2px',
+              opacity: 0.7,
+              marginTop: '0.2em',
+              marginBottom: '0.2em',
+            }}
+          />
+          {item.price && (
+            <span className={cn("text-base md:text-lg font-headline font-semibold text-primary whitespace-nowrap", lang === 'ar' ? 'ps-2' : 'pe-2')}>
+              {item.price} {cartDictionary.currency}
+            </span>
+          )}
         </div>
-        <p className="text-muted-foreground text-sm mt-1 truncate md:whitespace-normal">{item.description}</p>
-        
+        <p className="text-muted-foreground text-sm mt-1 truncate md:whitespace-normal font-medium tracking-wide">
+          {item.description}
+        </p>
         {hasOptions && (
-           <Badge variant="outline" className="mt-2">{dictionary.details_badge}</Badge>
+          <Badge variant="outline" className="mt-2 text-xs px-2 py-1 rounded-full bg-primary/5 border-primary/30">
+            {dictionary.details_badge}
+          </Badge>
         )}
       </div>
-       <div className="flex items-center h-full ms-2">
+      <div className="flex items-center h-full ms-2">
         <TooltipProvider>
-            <Tooltip>
-                <TooltipTrigger asChild>
-                    <Button size="icon" variant="ghost" className="rounded-full w-10 h-10 group-hover:bg-primary/10" onClick={handleDirectAdd}>
-                        <PlusCircle className="w-6 h-6 text-primary group-hover:scale-110 transition-transform"/>
-                    </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                    <p>{cartDictionary.add_to_order_button}</p>
-                </TooltipContent>
-            </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button size="icon" variant="ghost" className="rounded-full w-10 h-10 group-hover:bg-primary/10 border border-primary/20 shadow-sm" onClick={handleDirectAdd}>
+                <PlusCircle className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{cartDictionary.add_to_order_button}</p>
+            </TooltipContent>
+          </Tooltip>
         </TooltipProvider>
       </div>
     </div>
@@ -120,7 +137,7 @@ export function MenuSection({ dictionary, cartDictionary, lang }: MenuSectionPro
         <h2 className="text-3xl md:text-4xl font-headline text-center mb-8">
           {dictionary.title}
         </h2>
-        <Tabs defaultValue="starters" className="w-full">
+        <Tabs defaultValue="pizza" className="w-full">
           <div className="relative flex justify-center">
             <Carousel
               opts={{

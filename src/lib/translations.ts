@@ -1,58 +1,50 @@
 
 import type { Translations } from './types';
 import { uiTranslations } from './ui-translations';
-import { menuData } from './menu-data';
-import type { MenuItem as MenuItemData, MenuCategory as MenuCategoryData } from './menu-data';
+import { menuData, CATEGORY_KEYS, categoryNames } from './menu-data';
 
-function translateMenuData(data: MenuCategoryData[], lang: 'en' | 'fr' | 'ar'): Translations['menu']['items'] {
-    const translatedItems: Translations['menu']['items'] = {
-        starters: {},
-        main_course: {},
-        pizza: {},
-        tacos: {},
-        desserts: {},
-        drinks: {},
-    };
-
-    data.forEach(category => {
-        const categoryKey = category.key as keyof Translations['menu']['items'];
-        
-        category.items.forEach(itemData => {
+// Dynamically translate menu data and categories
+function translateMenuData(lang: 'en' | 'fr' | 'ar'): Translations['menu']['items'] {
+    const translatedItems: any = {};
+    CATEGORY_KEYS.forEach((categoryKey) => {
+        translatedItems[categoryKey] = {};
+        menuData[categoryKey].forEach((item) => {
             const translatedItem = {
-                ...itemData,
-                name: itemData.name[lang],
-                description: itemData.description[lang],
-                price: itemData.price?.toString(),
-                sizes: itemData.sizes ? Object.entries(itemData.sizes).reduce((acc, [key, value]) => {
-                    acc[key] = value.toString();
-                    return acc;
-                }, {} as { [key: string]: string }) : undefined,
-                addOns: itemData.addOns ? Object.entries(itemData.addOns).reduce((acc, [key, value]) => {
-                    acc[key] = value.toString();
-                    return acc;
-                }, {} as { [key: string]: string }) : undefined,
+                ...item,
+                name: item.name[lang],
+                description: item.description[lang],
+                price: item.price?.toString(),
+                sizes: item.sizes ? Object.fromEntries(Object.entries(item.sizes).map(([k, v]) => [k, v.toString()])) : undefined,
+                addOns: item.addOns ? Object.fromEntries(Object.entries(item.addOns).map(([k, v]) => [k, v.toString()])) : undefined,
             };
             delete (translatedItem as any).id;
-            
-            translatedItems[categoryKey][itemData.id] = translatedItem;
+            translatedItems[categoryKey][item.id] = translatedItem;
         });
     });
-
     return translatedItems;
 }
 
+// Dynamically build categories translation
+function getCategoryTranslations(lang: 'en' | 'fr' | 'ar') {
+    const result: Record<string, string> = {};
+    CATEGORY_KEYS.forEach((key) => {
+        result[key] = categoryNames[key][lang];
+    });
+    return result;
+}
 
 export const getTranslations = (locale: 'en' | 'fr' | 'ar'): Translations => {
-  const lang = (['en', 'fr', 'ar'].includes(locale) ? locale : 'en') as 'en' | 'fr' | 'ar';
-  
-  const specificUiTranslations = uiTranslations[lang];
-  const translatedMenuItems = translateMenuData(menuData, lang);
+    const lang = (['en', 'fr', 'ar'].includes(locale) ? locale : 'en') as 'en' | 'fr' | 'ar';
+    const specificUiTranslations = uiTranslations[lang];
+    const translatedMenuItems = translateMenuData(lang);
+    const dynamicCategories = getCategoryTranslations(lang);
 
-  return {
-    ...specificUiTranslations,
-    menu: {
-        ...specificUiTranslations.menu,
-        items: translatedMenuItems,
-    }
-  };
+    return {
+        ...specificUiTranslations,
+        menu: {
+            ...specificUiTranslations.menu,
+            categories: dynamicCategories,
+            items: translatedMenuItems,
+        },
+    };
 };

@@ -18,14 +18,6 @@ export const uiTranslations: UiTranslations = {
       title: "Our Menu",
       extras_question: "Want to add an extra?",
       details_badge: "View Details",
-      categories: {
-        starters: "Starters",
-        main_course: "Main Course",
-        pizza: "Pizza",
-        tacos: "Tacos",
-        desserts: "Desserts",
-        drinks: "Drinks",
-      },
       size_prompt: "Choose a size",
     },
     cart: {
@@ -60,14 +52,6 @@ export const uiTranslations: UiTranslations = {
       title: "Notre Carte",
       extras_question: "Voulez-vous un supplément?",
       details_badge: "Voir les détails",
-      categories: {
-        starters: "Entrées",
-        main_course: "Plats Principaux",
-        pizza: "Pizza",
-        tacos: "Tacos",
-        desserts: "Desserts",
-        drinks: "Boissons",
-      },
       size_prompt: "Choisissez une taille",
     },
     cart: {
@@ -102,14 +86,6 @@ export const uiTranslations: UiTranslations = {
       title: "قائمتنا",
       extras_question: "هل تريد إضافة؟",
       details_badge: "عرض التفاصيل",
-      categories: {
-        starters: "المقبلات",
-        main_course: "الأطباق الرئيسية",
-        pizza: "بيتزا",
-        tacos: "تاكوس",
-        desserts: "الحلويات",
-        drinks: "المشروبات",
-      },
       size_prompt: "اختر الحجم",
     },
     cart: {

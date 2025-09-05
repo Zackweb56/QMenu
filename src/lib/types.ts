@@ -1,4 +1,6 @@
 
+import type { CategoryKey } from './menu-data';
+
 export interface MenuItem {
   name: string;
   description: string;
@@ -23,9 +25,9 @@ export interface CartItem {
   selectedAddOns?: { [key:string]: string };
 }
 
-export interface MenuCategory {
-  [key: string]: MenuItem;
-}
+export type MenuCategory = {
+  [key in CategoryKey]: MenuItem;
+};
 
 export interface Translations {
   restaurantName: string;
@@ -42,18 +44,16 @@ export interface Translations {
     extras_question: string;
     details_badge: string;
     categories: {
-      starters: string;
-      main_course: string;
       pizza: string;
       tacos: string;
+      burger: string;
       desserts: string;
       drinks: string;
     };
     items: {
-      starters: MenuCategory;
-      main_course: MenuCategory;
       pizza: MenuCategory;
       tacos: MenuCategory;
+      burger: MenuCategory;
       desserts: MenuCategory;
       drinks: MenuCategory;
     };

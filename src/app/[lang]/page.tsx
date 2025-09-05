@@ -33,7 +33,7 @@ export default async function MenuPage({ params: { lang } }: MenuPageProps) {
       <section className="relative py-16 md:py-24 text-center">
         <div className="absolute inset-0">
           <Image 
-            src="https://picsum.photos/1200/800" 
+            src="/assets/qmenu_hero_image.jpg" 
             alt="Restaurant background"
             fill
             className="object-cover"
@@ -42,7 +42,7 @@ export default async function MenuPage({ params: { lang } }: MenuPageProps) {
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="container mx-auto px-4 relative">
-            <div className="max-w-2xl mx-auto bg-card-background p-6 md:p-8 rounded-xl border border-border/20 shadow-lg backdrop-blur-sm">
+            <div className="max-w-2xl mx-auto bg-card-background p-6 md:p-8 rounded-xl border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="flex flex-col items-center gap-4">
                     <Logo className="w-24 h-24 text-primary" />
                     <div>

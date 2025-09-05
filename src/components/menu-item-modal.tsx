@@ -126,7 +126,9 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
                     <Image
                       src={src}
                       alt={item.name}
-                      fill
+                      width={400}
+                      height={300}
+                      priority={true}
                       className="object-cover rounded-t-lg md:rounded-s-lg md:rounded-t-none"
                       data-ai-hint={item.imageHint}
                     />
@@ -158,7 +160,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
             
             <div className="flex-grow space-y-6 overflow-y-auto max-h-[40vh] p-1">
               {item.sizes && (
-                <div>
+                <div className="max-h-40 overflow-y-auto pr-2">
                   <h4 className="font-semibold text-foreground mb-3">{dictionary.size_prompt}</h4>
                   <RadioGroup onValueChange={handleSizeChange} defaultValue={Object.keys(item.sizes)[0]}>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2">
@@ -178,7 +180,7 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
               )}
 
               {item.addOns && (
-                <div>
+                <div className="max-h-40 overflow-y-auto pr-2">
                   <h4 className="font-semibold text-foreground mb-3">{dictionary.extras_question}</h4>
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     {Object.entries(item.addOns).map(([addOn, price]) => (
