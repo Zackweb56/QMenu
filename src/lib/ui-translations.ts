@@ -41,8 +41,8 @@ export const uiTranslations: UiTranslations = {
   fr: {
     restaurantName: "QMenu Numérique",
     restaurantSubtitle: "Un Goût du Maroc",
-    address: "123 Rue de la Kasbah, Marrakech, Maroc",
-    phone: "+212 5 24 38 86 11",
+    address: "123 Rue Kasbah, Béni Mellal, Maroc",
+    phone: "+212 7 71 61 56 22",
     header: {
       lang_en: "Anglais",
       lang_fr: "Français",
