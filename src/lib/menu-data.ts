@@ -115,22 +115,30 @@ export const menuData: MenuData = {
       imageHint: "double cheeseburger"
     }
   ],
-  sushi: [
+sushi: [
     {
-      id: "sushi_california_roll",  
-      name: { en: "California Roll", fr: "Roll Californien", ar: "رول كاليفورنيا" },
-      description: { en: "Tuna, avocado, cucumber, and wasabi.", fr: "Thon, avocat, concombre, et wasabi.", ar: "صيد، عنب، كوكتيل، وواسابي." },
-      price: 45,
-      imageUrl: "https://picsum.photos/600/400?random=401",
-      imageHint: "california roll"
+      id: "sushi_salmon_avocado_roll",
+      name: { en: "Salmon Avocado Roll", fr: "Roll Saumon Avocat", ar: "رول سلمون وأفوكادو" },
+      description: { en: "Fresh salmon and creamy avocado, a classic favorite.", fr: "Saumon frais et avocat crémeux, un classique incontournable.", ar: "سلمون طازج وأفوكادو كريمي، المفضلة الكلاسيكية." },
+      price: 60,
+      imageUrl: "/assets/images/SalmonAvocadoRoll.jpg",
+      imageHint: "Salmon avocado roll on a black plate"
     },
     {
-      id: "sushi_spicy_tuna_roll",
-      name: { en: "Spicy Tuna Roll", fr: "Roll Thon Épicé", ar: "رول تونا حار" },
-      description: { en: "Tuna with spicy mayo and cucumber.", fr: "Thon avec mayo épicée et concombre.", ar: "تونا مع مايونيز حار وخيار." },
-      price: 55,
-      imageUrl: "https://picsum.photos/600/400?random=402",
-      imageHint: "spicy tuna roll"
+      id: "sushi_california_roll_morocco",
+      name: { en: "California Roll", fr: "Roll Californien", ar: "رول كاليفورنيا" },
+      description: { en: "Crab stick, avocado, and cucumber, often topped with tobiko.", fr: "Bâtonnet de crabe, avocat et concombre, souvent garni de tobiko.", ar: "عصا السلطعون، الأفوكادو، والخيار، وغالبًا ما يتم تغطيته بـ توبيكو." },
+      price: 50,
+      imageUrl: "/assets/images/CaliforniaRoll.jpg",
+      imageHint: "California roll with orange fish roe on top"
+    },
+    {
+      id: "sushi_philadelphia_roll",
+      name: { en: "Philadelphia Roll", fr: "Roll Philadelphia", ar: "رول فيلادلفيا" },
+      description: { en: "Smoked salmon, creamy Philadelphia cheese, and cucumber.", fr: "Saumon fumé, fromage Philadelphia crémeux et concombre.", ar: "سلمون مدخن، جبنة فيلادلفيا الكريمية، وخيار." },
+      price: 65,
+      imageUrl: "/assets/images/PhiladelphiaRoll.jpg",
+      imageHint: "Philadelphia roll with cream cheese and salmon"
     }
   ],
 desserts: [

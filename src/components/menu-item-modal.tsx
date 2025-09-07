@@ -118,20 +118,23 @@ export function MenuItemModal({ isOpen, onClose, item, dictionary, cartDictionar
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-3xl p-0">
         <div className="grid md:grid-cols-2">
+          {/* Fixed height for image preview on mobile */}
           <div className="relative h-64 md:h-full">
             <Carousel className="w-full h-full">
               <CarouselContent>
                 {images.map((src, index) => (
                   <CarouselItem key={index}>
-                    <Image
-                      src={src}
-                      alt={item.name}
-                      width={400}
-                      height={300}
-                      priority={true}
-                      className="object-cover rounded-t-lg md:rounded-s-lg md:rounded-t-none"
-                      data-ai-hint={item.imageHint}
-                    />
+                    <div className="w-full h-64 md:h-full flex items-center justify-center">
+                      <Image
+                        src={src}
+                        alt={item.name}
+                        width={400}
+                        height={256}
+                        priority={true}
+                        className="object-cover rounded-t-lg md:rounded-s-lg md:rounded-t-none w-full h-full"
+                        data-ai-hint={item.imageHint}
+                      />
+                    </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
